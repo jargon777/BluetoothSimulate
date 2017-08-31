@@ -19,6 +19,7 @@ import math
 import random
 
 VISSIMFILE = "viss/1.inpx"
+WRITELOC = "out"
 POPULATESTEPS = 1000
 DETECTORFILE = "detectors.json"
 
@@ -88,7 +89,7 @@ class NetworkData():
         for detector in self.Detectors:
             if (time % detector["pollrate"]):
                 for veh in self.ActiveVehicles:
-                    if detector["id"] in veh.DetectableBy:
+                    if detector["type"] in veh.DetectableBy:
                         if self._CheckInCircle(veh.coord, detector):
                             #raw detections stores the list of detections as they happen
                             detector["rawdetections"].add([time, veh.Number])
@@ -97,7 +98,7 @@ class NetworkData():
                             if not veh.Number in detector["detectrecord"]:
                                 detector["detectrecord"][veh.Number] = {}
                                 detector["detectrecord"][veh.Number]["first"] = time
-                                detector["detectrecord"]["detect"] = 0
+                                detector["detectrecord"][veh.Number]["detect"] = 0
                             detector["detectrecord"][veh.Number]["last"] = time
                             detector["detectrecord"][veh.Number]["detect"] += 1
     def PollAllVehicles(self, VISSIM):
@@ -140,7 +141,12 @@ class NetworkData():
         if (dist < math.pow(det_range, 2)): return True
         else: return False           
         
-
+    def DumpRecords(self):
+        for detector in self.Detectors:
+            with open(WRITELOC + str(detector["id"]) + "_agg.csv", "w") as writefile:
+                writefile.write("id,first,last,hits\n")
+                for key, item in detector["detectrecord"]:
+                    writefile.write(str(key) + "," + item["first"] + "," + item["last"] + "," + item["detect"] + "\n")
                 
 #Class to interact with individual vehicles in VISSIM.
 class VehicleData(object):
@@ -158,9 +164,10 @@ class VehicleData(object):
     #this method does a probability roll to determine which detectors are assigned to the car.
     def determineDetection(self, detectors):
         for detector in detectors:
+            if detector["type"] in self.DetectableBy: continue
             val = random.random() * 100
             if val <= detector["detection-penr"]:
-                self.DetectableBy.add(detector["id"])
+                self.DetectableBy.add(detector["type"])
         
 
 

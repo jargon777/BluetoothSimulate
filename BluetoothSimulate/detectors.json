@@ -1,11 +1,12 @@
 [
 	{
 		"id": "bluetooth1",
+		"type": "bluetooth",
 		"coord": [43,-183.5,0], 
 		"range": 350,
 		"pollrate": 1,
 		"detection-penr": 15,
 		"rawdetections": [],
-		"detectrecord": {}
+		"detectrecord": {},
 	}
 ]
