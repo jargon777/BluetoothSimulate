@@ -2,41 +2,41 @@
 <layout version="101">
 	<defaultWindowLayouts>
 		<windowLayoutDefault floating="false" height="503" no="1" positionX="225" positionY="1202" subType="Parent PEDESTRIANCOMPOSITION" type="CoupledListWindow" width="1695"/>
+		<windowLayoutDefault floating="false" height="598" no="2" positionX="1286" positionY="79" subType="" type="ObjectPropertiesWindow" width="75"/>
+		<windowLayoutDefault floating="false" height="620" no="3" positionX="1286" positionY="79" subType="" type="SmartMapControl" width="75"/>
 	</defaultWindowLayouts>
 	<currentWindowLayouts>
 		<windowLayoutCurrent no="1">
 			<dockAreaPanes>
-				<dockableAreaPane childPaneStyle="2" dockedLocation="2" floating="false" floatingLocationX="1600" floatingLocationY="520" keyText="" no="1" paneType="3" sizeHeight="948" sizeWidth="95" tag="" text="" textTabResolved="" visible="true">
-					<dockChildPanes>
-						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="true" keyText="Quick View1" no="1" paneLayoutNo="0" paneType="1" pinned="true" sizeHeight="926" sizeWidth="95" subType="" tag="" text="Quick View" textTabResolved="Quick View" type="PTV.Vision.Controls.ObjectPropertiesWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
-						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="false" keyText="Smart Map1" no="2" paneLayoutNo="2" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="" tag="" text="Smart Map" textTabResolved="Smart Map" type="PTV.Vision.Controls.SmartMapControl, ControlUtils, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
-					</dockChildPanes>
-				</dockableAreaPane>
-				<dockableAreaPane childPaneStyle="2" dockedLocation="3" floating="false" floatingLocationX="719" floatingLocationY="900" keyText="" no="2" paneType="3" sizeHeight="147" sizeWidth="1820" tag="" text="" textTabResolved="" visible="true">
+				<dockableAreaPane childPaneStyle="2" dockedLocation="3" floating="false" floatingLocationX="719" floatingLocationY="768" keyText="" no="1" paneType="3" sizeHeight="189" sizeWidth="1364" tag="" text="" textTabResolved="" visible="true">
 					<dockChildPanes>
 						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="false" keyText="Conflict Areas1" no="1" paneLayoutNo="1" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="Parent CONFLICTAREA" tag="" text="Conflict Areas" textTabResolved="Conflict Areas" type="PTV.Vision.Controls.CoupledListWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
-						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="true" keyText="Vehicle Inputs1" no="2" paneLayoutNo="2" paneType="1" pinned="true" sizeHeight="125" sizeWidth="1820" subType="Parent VEHICLEINPUT" tag="" text="Vehicle Inputs" textTabResolved="Vehicle Inputs" type="PTV.Vision.Controls.CoupledListWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
+						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="false" keyText="Vehicle Inputs1" no="2" paneLayoutNo="2" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="Parent VEHICLEINPUT" tag="" text="Vehicle Inputs" textTabResolved="Vehicle Inputs" type="PTV.Vision.Controls.CoupledListWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
 						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="false" keyText="Static Vehicle Routing Decisions1" no="3" paneLayoutNo="3" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="Parent VEHICLEROUTINGDECISIONSTATIC" tag="" text="Static Vehicle Routing Decisions / Static Vehicle Routes" textTabResolved="Static Vehicle Routing Decisions / Static Vehicle Routes" type="PTV.Vision.Controls.CoupledListWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
 						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="false" keyText="Signal Controllers1" no="4" paneLayoutNo="4" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="Parent SIGNALCONTROLLER" tag="" text="Signal Controllers / Signal Groups" textTabResolved="Signal Controllers / Signal Groups" type="PTV.Vision.Controls.CoupledListWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
 						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="false" keyText="Signal Controllers2" no="5" paneLayoutNo="5" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="Parent SIGNALCONTROLLER" tag="" text="Signal Controllers / Signal Groups (2)" textTabResolved="Signal Controllers / Signal Groups (2)" type="PTV.Vision.Controls.CoupledListWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
 						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="false" keyText="Signal Controllers3" no="6" paneLayoutNo="6" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="Parent SIGNALCONTROLLER" tag="" text="Signal Controllers / Signal Groups (3)" textTabResolved="Signal Controllers / Signal Groups (3)" type="PTV.Vision.Controls.CoupledListWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
 						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="false" keyText="Signal Controllers4" no="7" paneLayoutNo="7" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="Parent SIGNALCONTROLLER" tag="" text="Signal Controllers / Signal Groups (4)" textTabResolved="Signal Controllers / Signal Groups (4)" type="PTV.Vision.Controls.CoupledListWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
+						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="false" keyText="Delay Measurements1" no="8" paneLayoutNo="8" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="Parent DELAYMEASUREMENT" tag="" text="Delay Measurements" textTabResolved="Delay Measurements" type="PTV.Vision.Controls.CoupledListWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
+						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="false" keyText="Signal Controllers5" no="9" paneLayoutNo="9" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="Parent SIGNALCONTROLLER" tag="" text="Signal Controllers / Signal Groups (5)" textTabResolved="Signal Controllers / Signal Groups (5)" type="PTV.Vision.Controls.CoupledListWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
+						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="true" keyText="Simulation Runs1" no="10" paneLayoutNo="10" paneType="1" pinned="true" sizeHeight="167" sizeWidth="1364" subType="Parent SIMULATIONRUN" tag="" text="Simulation Runs" textTabResolved="Simulation Runs" type="PTV.Vision.Controls.CoupledListWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
+						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="false" keyText="Delay Results1" no="11" paneLayoutNo="11" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="Parent DELAYMEASUREMENTEVALUATION" tag="" text="Delay Results" textTabResolved="Delay Results" type="PTV.Vision.Controls.CoupledListWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
 					</dockChildPanes>
 				</dockableAreaPane>
-				<dockableAreaPane childPaneStyle="2" dockedLocation="1" floating="false" floatingLocationX="-1" floatingLocationY="-1" keyText="" no="3" paneType="3" sizeHeight="796" sizeWidth="311" tag="" text="" textTabResolved="" visible="true">
+				<dockableAreaPane childPaneStyle="2" dockedLocation="1" floating="false" floatingLocationX="-1" floatingLocationY="-1" keyText="" no="2" paneType="3" sizeHeight="442" sizeWidth="208" tag="" text="" textTabResolved="" visible="true">
 					<dockChildPanes>
-						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="true" keyText="Network Objects1" no="1" paneLayoutNo="0" paneType="1" pinned="true" sizeHeight="774" sizeWidth="311" subType="" tag="" text="Network Objects" textTabResolved="Network Objects" type="PTV.Vision.Controls.MainWindowNetObjSelectionControl, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
+						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="true" keyText="Network Objects1" no="1" paneLayoutNo="0" paneType="1" pinned="true" sizeHeight="420" sizeWidth="208" subType="" tag="" text="Network Objects" textTabResolved="Network Objects" type="PTV.Vision.Controls.MainWindowNetObjSelectionControl, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
 						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="false" keyText="Levels1" no="2" paneLayoutNo="0" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="" tag="" text="Levels" textTabResolved="Levels" type="PTV.Vision.Controls.LevelSelectionControl, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
 						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="false" keyText="Backgrounds1" no="3" paneLayoutNo="0" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="" tag="" text="Backgrounds" textTabResolved="Backgrounds" type="PTV.Vision.Controls.BackgroundSelectionControl, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
 					</dockChildPanes>
 				</dockableAreaPane>
-				<dockableAreaPane childPaneStyle="1" dockedLocation="4" floating="false" floatingLocationX="-1" floatingLocationY="-1" keyText="" no="4" paneType="3" sizeHeight="796" sizeWidth="1504" tag="" text="" textTabResolved="" visible="true">
+				<dockableAreaPane childPaneStyle="1" dockedLocation="4" floating="false" floatingLocationX="-1" floatingLocationY="-1" keyText="" no="3" paneType="3" sizeHeight="442" sizeWidth="1151" tag="" text="" textTabResolved="" visible="true">
 					<dockChildPanes>
-						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="true" keyText="Network Editor1" no="1" paneLayoutNo="3" paneType="1" pinned="true" sizeHeight="796" sizeWidth="1504" subType="" tag="" text="Network Editor" textTabResolved="Network Editor" type="PTV.Vision.Controls.NetEditorControl, ControlUtils, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
+						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="true" keyText="Network Editor1" no="1" paneLayoutNo="3" paneType="1" pinned="true" sizeHeight="442" sizeWidth="1151" subType="" tag="" text="Network Editor" textTabResolved="Network Editor" type="PTV.Vision.Controls.NetEditorControl, ControlUtils, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
 					</dockChildPanes>
 				</dockableAreaPane>
 			</dockAreaPanes>
-			<mainWindow height="1056" maximized="true" positionX="-8" positionY="-8" width="1936"/>
+			<mainWindow height="744" maximized="true" positionX="-8" positionY="-8" width="1380"/>
 		</windowLayoutCurrent>
 	</currentWindowLayouts>
 	<networkEditorLayouts>
@@ -137,103 +137,8 @@
 				<typeRef id="VEHICLETRAVELTIMEMEASUREMENT"/>
 			</selectableTypes>
 		</networkEditorLayout>
-		<networkEditorLayout name="" no="2" synchronization="1">
-			<camera lookAtPos3DX="0.000000" lookAtPos3DY="1.000000" lookAtPos3DZ="1000.000000" pos2DX="-8043219.252161" pos2DY="-12254471.585302" pos3DX="0.000000" pos3DY="-0.000000" pos3DZ="1000.000000" zoom2D="148243.738300"/>
-			<gParSet>
-				<signalHeadGPars labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" lineColor="ff800000" objectVisibility="true" trafficSignalDisplay="1"/>
-				<stopSignGPars labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" lineColor="ff800000" objectVisibility="true"/>
-				<parkingLotGPars borderColor="ff000080" borderLineStyle="1" fillColor="ff808080" fillStyle="2" labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" objectVisibility="true"/>
-				<linkGPars borderColor="ff606060" borderLineStyle="2" colorSchemeDisplayBase="1" connectorBorderColor="ff606060" connectorBorderLineStyle="2" connectorFillColor="ff808080" connectorFillStyle="1" connectorWireframeColor="ff800080" fillColor="ff808080" fillStyle="1" labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" laneMarkingColor="fff0f0f0" laneMarkingWidth="0.120000" linkWireFrameColor="ff000080" objectVisibility="true" useColorScheme="false" useDisplayType="true"/>
-				<detectorGPars borderColor="ff000080" borderLineStyle="1" fillColor="ff808080" fillStyle="2" labelAttribute="PORTNO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" objectVisibility="true"/>
-				<reducedSpeedAreaGPars borderColor="a0008000" borderLineStyle="1" fillColor="ff808080" fillStyle="2" labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" objectVisibility="true"/>
-				<pedAreaGPars borderColor="ff000080" borderLineStyle="1" colorByFunction="true" colorSchemeDisplayBase="2" fillColor="ff808080" fillStyle="1" labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" objectVisibility="true" useColorScheme="false" useDisplayType="false"/>
-				<pedObstacleGPars borderColor="ff000080" borderLineStyle="1" fillColor="ff808080" fillStyle="1" labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" objectVisibility="true" useDisplayType="true"/>
-				<pedRampGPars borderColor="ff000080" borderLineStyle="1" colorSchemeDisplayBase="2" fillColor="ff808080" fillStyle="1" labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" objectVisibility="true" useColorScheme="false" useDisplayType="true"/>
-				<queueCounterGPars labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" lineColor="ff800000" objectVisibility="true"/>
-				<vehicleRoutingDecisionGPars activeStopColor="ffff0000" closureRouteColor="fff00000" endLineColor="ff008000" forceShowingFromDistance="true" inactiveStopColor="ff800000" labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" managedLaneGeneralRouteColor="ff00a000" managedLaneManagedRouteColor="ffa00000" objectVisibility="true" parkingLotRouteColor="ff0000a0" partialPTRouteColor="fff0f000" partialRouteColor="fff0f000" startLineColor="ff800000" staticRouteColor="fff0f000"/>
-				<ptLineGPars activeStopColor="ffff0000" endLineColor="ff008000" fillStyle="1" inactiveStopColor="ff008000" labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" objectVisibility="true" ptLineFillColor="ff808000" startLineColor="ff800000"/>
-				<conflictAreaGPars labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" objectVisibility="true"/>
-				<nodeGPars borderColor="ff000080" borderLineStyle="1" colorByFunction="false" fillColor="ff808080" fillStyle="2" labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" objectVisibility="true" segmentBorderColor="ff000080" segmentBorderLineStyle="1" segmentFillColor="99000080" segmentFillStyle="2" useColorScheme="false"/>
-				<ptStopGPars borderColor="ff000080" borderLineStyle="1" fillColor="ff808080" fillStyle="2" labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" objectVisibility="true"/>
-				<priorityRulesGPars endLineColor="ff008000" hdwyColor="ff008000" hdwyVisib="true" labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" objectVisibility="true" startLineColor="ff800000"/>
-				<pedTravelTimeMeasurementGPars endPointBorderColor="ff000080" endPointBorderLineStyle="1" endPointFillColor="ff808080" endPointFillStyle="1" labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" objectVisibility="true" startPointBorderColor="ff000080" startPointBorderLineStyle="1" startPointFillColor="ff808080" startPointFillStyle="1"/>
-				<vehicleInputGPars labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" lineColor="ff800000" objectVisibility="true"/>
-				<desiredSpeedDecisionGPars labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" lineColor="ff800000" objectVisibility="true"/>
-				<dataCollectionPointGPars labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" lineColor="ff7f593f" objectVisibility="true"/>
-				<pavementMarkingGPars labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" lineColor="ffffffff" objectVisibility="true"/>
-				<sectionGPars borderColor="ff000080" borderLineStyle="1" fillColor="ff808080" fillStyle="1" labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" objectVisibility="true" useDisplayType="true"/>
-				<pedInputGPars borderColor="ff000080" borderLineStyle="1" fillColor="ff808080" fillStyle="1" labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" objectVisibility="true"/>
-				<pedRoutingDecisionGPars endPointBorderColor="ff000080" endPointBorderLineStyle="1" endPointFillColor="ff808080" endPointFillStyle="1" intermediatePointsBorderColor="ff000080" intermediatePointsBorderLineStyle="1" intermediatePointsFillColor="ff0066cc" intermediatePointsFillStyle="1" labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" objectVisibility="true" partialRouteColor="fff000f0" startPointBorderColor="ff000080" startPointBorderLineStyle="1" startPointFillColor="ff808080" startPointFillStyle="1" staticRouteColor="fff0f000"/>
-				<vehicleTravelTimeMeasurementsGPars endLineColor="ff008000" labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" objectVisibility="true" startLineColor="ff800000"/>
-				<backgroundGPars borderColor="ff000000" borderLineStyle="2" labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" objectVisibility="true"/>
-				<vehicleGPars colorByVehicleState="false" objectVisibility="true" selectionColor="ffff7fff" useColorScheme="false"/>
-				<pedestrianGPars objectVisibility="true" selectionColor="ffff7fff" useColorScheme="false"/>
-				<baseGPars autoLvlTransp="true" backgroundColor="ffc0c0c0" labelMaxHeight="10" labelMaxWidth="50" mapGrayScale="false" mapIntensity="100" mapType="1" mode3D="false" rubberbandColor="fff0f000" selectionColor="fff0f000" showGrid="false" showMap="true" showScale="true" wireframeMode="false"/>
-				<gPars3D fogExpDensity="2.000000" fogLinEnd="28000.000000" fogLinStart="5000.000000" fogMode="1" landColor="ffc0c0c0" landTexture="" landTextureHorizontalLength="1.000000" loDDisableShadingBeyond="800.000000" loDReplaceVehicleByPrimitveBeyond="1000.000000" loDSimplifyVehicleBeyond="500.000000" showLand="true" skyColor="ff00aafa" skyTexture="" undergroundColor="ff291e19" undergroundTexture=""/>
-				<trafficSignal3DGPars color2D="ff000080" labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" mastColor2D="ff008000" objectVisibility="true" signalArmColor2D="ff800000" signalHeadColor2D="ff000080" streetlightColor2D="ff808000"/>
-				<static3DModelGPars borderColor="a0ffffff" borderLineStyle="1" fillColor="ff808080" fillStyle="2" labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" objectVisibility="true"/>
-			</gParSet>
-			<selectableTypes>
-				<typeRef id="AREA"/>
-				<typeRef id="BACKGROUNDIMAGE"/>
-				<typeRef id="CONFLICTAREA"/>
-				<typeRef id="CONFLICTMARKER"/>
-				<typeRef id="DATACOLLECTIONPOINT"/>
-				<typeRef id="DESSPEEDDECISION"/>
-				<typeRef id="DETECTOR"/>
-				<typeRef id="EDGE"/>
-				<typeRef id="LABEL"/>
-				<typeRef id="LINK"/>
-				<typeRef id="LINKSEGMENT"/>
-				<typeRef id="NODE"/>
-				<typeRef id="OBSTACLE"/>
-				<typeRef id="PARKINGLOT"/>
-				<typeRef id="PARTIALPTLINESTOP"/>
-				<typeRef id="PATH"/>
-				<typeRef id="PAVEMENTMARKING"/>
-				<typeRef id="PEDESTRIAN"/>
-				<typeRef id="PEDESTRIANINPUT"/>
-				<typeRef id="PEDESTRIANROUTELOCATION"/>
-				<typeRef id="PEDESTRIANROUTEPARTIAL"/>
-				<typeRef id="PEDESTRIANROUTESTATIC"/>
-				<typeRef id="PEDESTRIANROUTINGDECISIONPARTIAL"/>
-				<typeRef id="PEDESTRIANROUTINGDECISIONSTATIC"/>
-				<typeRef id="PEDESTRIANTRAVELTIMEMEASUREMENT"/>
-				<typeRef id="PRIORITYRULE"/>
-				<typeRef id="PTLINE"/>
-				<typeRef id="PTLINESTOP"/>
-				<typeRef id="PTSTOP"/>
-				<typeRef id="QUEUECOUNTER"/>
-				<typeRef id="RAMP"/>
-				<typeRef id="REDUCEDSPEEDAREA"/>
-				<typeRef id="SECTION"/>
-				<typeRef id="SIGNALHEAD"/>
-				<typeRef id="STATIC3DMODEL"/>
-				<typeRef id="STOPSIGN"/>
-				<typeRef id="TRAFFICSIGNAL3D"/>
-				<typeRef id="VEHICLE"/>
-				<typeRef id="VEHICLEINPUT"/>
-				<typeRef id="VEHICLEROUTECLOSURE"/>
-				<typeRef id="VEHICLEROUTEMANAGEDLANES"/>
-				<typeRef id="VEHICLEROUTEPARKING"/>
-				<typeRef id="VEHICLEROUTEPARTIAL"/>
-				<typeRef id="VEHICLEROUTEPARTIALPT"/>
-				<typeRef id="VEHICLEROUTESTATIC"/>
-				<typeRef id="VEHICLEROUTINGDECISIONCLOSURE"/>
-				<typeRef id="VEHICLEROUTINGDECISIONDYNAMIC"/>
-				<typeRef id="VEHICLEROUTINGDECISIONMANAGEDLANES"/>
-				<typeRef id="VEHICLEROUTINGDECISIONMANAGEDLANESLINKCROSSSECTION"/>
-				<typeRef id="VEHICLEROUTINGDECISIONPARKING"/>
-				<typeRef id="VEHICLEROUTINGDECISIONPARTIAL"/>
-				<typeRef id="VEHICLEROUTINGDECISIONPARTIALLINKCROSSSECTION"/>
-				<typeRef id="VEHICLEROUTINGDECISIONPARTIALPT"/>
-				<typeRef id="VEHICLEROUTINGDECISIONPARTIALPTLINKCROSSSECTION"/>
-				<typeRef id="VEHICLEROUTINGDECISIONSTATIC"/>
-				<typeRef id="VEHICLETRAVELTIMEMEASUREMENT"/>
-			</selectableTypes>
-		</networkEditorLayout>
 		<networkEditorLayout name="" no="3" synchronization="1">
-			<camera lookAtPos3DX="0.000000" lookAtPos3DY="-99.292893" lookAtPos3DZ="99.292893" pos2DX="-196.119484" pos2DY="-350.352087" pos3DX="0.000000" pos3DY="-100.000000" pos3DZ="100.000000" zoom2D="1.429650"/>
+			<camera lookAtPos3DX="0.000000" lookAtPos3DY="-99.292893" lookAtPos3DZ="99.292893" pos2DX="-126.385190" pos2DY="-282.672831" pos3DX="0.000000" pos3DY="-100.000000" pos3DZ="100.000000" zoom2D="1.787063"/>
 			<gParSet>
 				<signalHeadGPars labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" lineColor="ff800000" objectVisibility="true" trafficSignalDisplay="1"/>
 				<stopSignGPars labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" lineColor="ffff8000" objectVisibility="true"/>
@@ -463,6 +368,62 @@
 					<attributeListLayoutParameters alignment="1" attributeID="TYPE" columnWidth="37.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
 				</attributeLPars>
 			</childNetObjectLParSet>
+		</listLayout>
+		<listLayout childRelation="" exportListWhenSimulationFinished="false" name="" no="8" verticalSplitterPosition="0.500000">
+			<netObjectLParSet filtered="false" headerHeight="0.000000" netObjectTypeID="DELAYMEASUREMENT" rowHeaderWidth="35.000000" rowHeight="0" showSimulationRunAggregates="true" showTimeIntervalAggregates="false" synchronization="false">
+				<attributeLPars>
+					<attributeListLayoutParameters alignment="2" attributeID="NO" columnWidth="27.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="1" attributeID="NAME" columnWidth="43.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="1" attributeID="VEHTRAVTMMEAS" columnWidth="100.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+				</attributeLPars>
+			</netObjectLParSet>
+		</listLayout>
+		<listLayout childRelation="SGS" exportListWhenSimulationFinished="false" name="" no="9" verticalSplitterPosition="0.469880">
+			<netObjectLParSet filtered="false" headerHeight="0.000000" netObjectTypeID="SIGNALCONTROLLER" rowHeaderWidth="35.000000" rowHeight="0" showSimulationRunAggregates="true" showTimeIntervalAggregates="false" synchronization="false">
+				<attributeLPars>
+					<attributeListLayoutParameters alignment="2" attributeID="NO" columnWidth="27.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="1" attributeID="NAME" columnWidth="43.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="1" attributeID="TYPE" columnWidth="37.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="2" attributeID="CYCTM" columnWidth="49.000000" decimals="0" format="20" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="3" attributeID="CYCTMISVAR" columnWidth="74.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="1" attributeID="SUPPLYFILE1" columnWidth="71.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="1" attributeID="SUPPLYFILE2" columnWidth="71.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="2" attributeID="PROGNO" columnWidth="52.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+				</attributeLPars>
+			</netObjectLParSet>
+			<childNetObjectLParSet filtered="false" headerHeight="0.000000" netObjectTypeID="SIGNALGROUP" rowHeaderWidth="0.000000" rowHeight="0" showSimulationRunAggregates="true" showTimeIntervalAggregates="false" synchronization="false">
+				<attributeLPars>
+					<attributeListLayoutParameters alignment="2" attributeID="NO" columnWidth="27.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="1" attributeID="NAME" columnWidth="43.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="1" attributeID="TYPE" columnWidth="37.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+				</attributeLPars>
+			</childNetObjectLParSet>
+		</listLayout>
+		<listLayout childRelation="" exportListWhenSimulationFinished="false" name="" no="10" verticalSplitterPosition="0.500000">
+			<netObjectLParSet filtered="false" headerHeight="0.000000" netObjectTypeID="SIMULATIONRUN" rowHeaderWidth="35.000000" rowHeight="0" showSimulationRunAggregates="true" showTimeIntervalAggregates="false" synchronization="false">
+				<attributeLPars>
+					<attributeListLayoutParameters alignment="2" attributeID="NO" columnWidth="27.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="1" attributeID="TIMESTAMP" columnWidth="113.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="2" attributeID="RANDSEED" columnWidth="63.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="2" attributeID="STARTTM" columnWidth="91.000000" decimals="0" format="21" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="2" attributeID="SIMEND" columnWidth="73.000000" decimals="1" format="20" quickViewRowHeight="0.000000" showUnits="false"/>
+				</attributeLPars>
+			</netObjectLParSet>
+		</listLayout>
+		<listLayout childRelation="" exportListWhenSimulationFinished="false" name="" no="11" verticalSplitterPosition="0.500000">
+			<netObjectLParSet filtered="false" headerHeight="0.000000" netObjectTypeID="DELAYMEASUREMENTEVALUATION" rowHeaderWidth="35.000000" rowHeight="0" showSimulationRunAggregates="true" showTimeIntervalAggregates="false" synchronization="false">
+				<attributeLPars>
+					<attributeListLayoutParameters alignment="1" attributeID="SIMRUN" columnWidth="52.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="1" attributeID="TIMEINT" columnWidth="63.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="1" attributeID="DELAYMEASUREMENT" columnWidth="113.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="2" attributeID="STOPDELAY(ALL)" columnWidth="86.000000" decimals="2" format="20" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="2" attributeID="STOPS(ALL)" columnWidth="62.000000" decimals="2" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="2" attributeID="VEHDELAY(ALL)" columnWidth="82.000000" decimals="2" format="20" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="2" attributeID="VEHS(ALL)" columnWidth="58.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="2" attributeID="PERSDELAY(ALL)" columnWidth="84.000000" decimals="2" format="20" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="2" attributeID="PERS(ALL)" columnWidth="55.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+				</attributeLPars>
+			</netObjectLParSet>
 		</listLayout>
 	</listLayouts>
 	<workspaceLayout editColumnVisible="true" gParColumnVisible="true" globalSidebarComponentGraphicParameterFolded="false" globalSidebarComponentGraphicParameterHeight="0.000000" globalSidebarComponentQuickViewFolded="false" globalSidebarComponentQuickViewHeight="0.000000" globalSidebarWidth="0.000000" labelColumnVisible="true" sidebarMode="1" statusBarMode="1"/>

@@ -19,28 +19,53 @@ import math
 import random
 
 VISSIMFILE = "viss/1.inpx"
-WRITELOC = "out"
+WRITELOC = "out/"
 POPULATESTEPS = 1000
 DETECTORFILE = "detectors.json"
+STEPS = 37000
+BACKUPSTEPS = 99999
 
 def main():
-    print("Loading VISSIM and populating network...")
+    print("Main Loop Running...")
     VissimControl = VissimConnect(VISSIMFILE, POPULATESTEPS) #main class to interact with VISSIM. See imported ulib/vissimconnect.
     print("  ...Done.")
     print("Running Loop Forever")
-    while True:
-        VissimControl.advanceSimulation()
-    
+    i = 0
+    try:
+        while i < STEPS:
+            VissimControl.advanceSimulation()
+            if i % BACKUPSTEPS == 0:
+                VissimControl.Data.DumpRecords()
+                VissimControl.Data.DumpDirectionalTT()
+            
+            if i % 250 == 0:
+                print("Step " + str(i) + " completed")
+                
+            i += 1
+    except:
+        raise
+    finally:
+        print("Program End... dumping records...")
+        VissimControl.Data.DumpRecords()
+        VissimControl.Data.DumpDirectionalTT()
+        
+
+class MessageRelay(object):
+    def __init__(self):
+        pass
+    def StatusUpdate(self, message):
+        print(message)
+
 class VissimConnect(object):
     def __init__(self, foname, populatesteps=0):
         pythoncom.CoInitialize()
+        self.MessageRelay = MessageRelay() #console interaction
         self.Vissim = None #Variable which will house the COM that interfaces with Vissim
         self.populateSteps = populatesteps #The number of steps we want VISSIM to run before we begin observing vehicles. Vissim starts with no vehicles on the network, this time allows cars to enter.
         self.step = 0 #current time-step. Each time we advance the simulation one step, VISSIM does calculations. By default, 1 step = 0.2 simulated seconds.
         self.startVissim(foname) #open vissim, opening the *.inpx file at foname
         self.actingInterval = 5 #polling through com is slow. This setting sets it to poll VISSIM every simulated second.
-        
-        self.Data = NetworkData() #create the class that will house the data.
+        self.Data = NetworkData(self.MessageRelay) #create the class that will house the data.
         
     #function that loads VISSIM. After loading VISSIM, it starts runs a function to populate the network for the steps saved before.
     def startVissim(self, foname):
@@ -65,34 +90,31 @@ class VissimConnect(object):
     #main function that retrieves data from VISSIM
     def advanceSimulation(self):
         #update the records of all the vehicles
-        
         self.Vissim.Simulation.RunSingleStep() #advances the simulation by one step. Vissim will do new calculations.
         self.step += 1
-        
-        while self.step % self.actingInterval != 0:
-            self.Vissim.Simulation.RunSingleStep() #advances the simulation by one step. Vissim will do new calculations.
-            self.step += 1
-        
         self.Data.PollAllVehicles(self.Vissim)
-        self.Data.PollAllDetecotrs(self.step)
+        self.Data.PollAllDetectors(self.step)
+    
  
 class NetworkData():
-    def __init__(self):
+    def __init__(self, messagerelay):
         self.ActiveVehicles = {}#dict to hold all the vehicles currently on the network
         self.InactiveVehicles = {} #dict to hold vehicles that have left the network
         self.Links = {} #dict to hold all the links in the network. 
         self.Detectors = {}  
-        
+        self.CurrentSimulationRun = 0
+        self.MessageRelay = messagerelay
         self._loadDetectors()        
     
-    def PollAllDetecotrs(self, time):
+    def PollAllDetectors(self, time):
         for detector in self.Detectors:
-            if (time % detector["pollrate"]):
+            if (time % detector["pollrate"] == 0):
                 for veh in self.ActiveVehicles:
+                    veh = self.ActiveVehicles[veh]
                     if detector["type"] in veh.DetectableBy:
-                        if self._CheckInCircle(veh.coord, detector):
+                        if self._CheckInCircle(veh.Coord, detector):
                             #raw detections stores the list of detections as they happen
-                            detector["rawdetections"].add([time, veh.Number])
+                            detector["rawdetections"].append([time, veh.Number])
                             
                             #an aggregated record is also stored
                             if not veh.Number in detector["detectrecord"]:
@@ -103,7 +125,6 @@ class NetworkData():
                             detector["detectrecord"][veh.Number]["detect"] += 1
     def PollAllVehicles(self, VISSIM):
         Veh_Attributes = VISSIM.Net.Vehicles.GetMultipleAttributes(["No", "Lane", "CoordFront", "Speed", "Pos", "SimRun"])
-        self._ResetQueues()
         self.InactiveVehicles = self.ActiveVehicles
         self.ActiveVehicles = {}
         for veh in Veh_Attributes:
@@ -113,16 +134,15 @@ class NetworkData():
             coords = coord.split() #split the coordinates into X Y Z array.
             speed = float(veh[3])
             linkpos = float(veh[4])
-            self.Performance.CurrentSimulationRun = int(veh[5])   
+            self.CurrentSimulationRun = int(veh[5])   
             if (v_num in self.InactiveVehicles):
                 vehicle = self.InactiveVehicles.pop(v_num)
                 vehicle.Number = v_num
                 vehicle.CurrentLink = link_on
-                vehicle.Pos = coords
+                vehicle.Coord = coords
                 vehicle.LinkPos = linkpos
                 vehicle.CurrentSpeed = speed
                 self.ActiveVehicles[v_num] = vehicle
-                self._UpdatePerformance(vehicle)
             else:
                 self.ActiveVehicles[v_num] = VehicleData(v_num, link_on, linkpos, None, None, coords, speed, self.Detectors)
 
@@ -132,21 +152,44 @@ class NetworkData():
             self.Detectors = json.load(df)
                             
     def _CheckInCircle(self, veh_coord, detector):
-        veh_x = veh_coord[0]
-        veh_y = veh_coord[1]
-        det_x = detector["coord"][0]
-        det_y = detector["coord"][1]
-        det_range = detector["range"]
+        veh_x = float(veh_coord[0])
+        veh_y = float(veh_coord[1])
+        det_x = float(detector["coord"][0])
+        det_y = float(detector["coord"][1])
+        det_range = float(detector["range"])
         dist = math.pow((veh_x - det_x), 2) + math.pow((veh_y - det_y), 2)
         if (dist < math.pow(det_range, 2)): return True
         else: return False           
         
     def DumpRecords(self):
+        self.MessageRelay.StatusUpdate("Dumping CSV File")
         for detector in self.Detectors:
             with open(WRITELOC + str(detector["id"]) + "_agg.csv", "w") as writefile:
                 writefile.write("id,first,last,hits\n")
-                for key, item in detector["detectrecord"]:
-                    writefile.write(str(key) + "," + item["first"] + "," + item["last"] + "," + item["detect"] + "\n")
+                for key, value in detector["detectrecord"].items():
+                    writefile.write(str(key) + "," + str(value["first"]) + "," + str(value["last"]) + "," + str(value["detect"]) + "\n")
+                    
+    def DumpDirectionalTT(self):
+        records = {}
+        for detector in self.Detectors:
+            for vnum in detector["detectrecord"]:
+                for matchable in self.Detectors:
+                    if matchable["id"] == detector["id"]: continue
+                    if vnum in matchable["detectrecord"]:
+                        origt = detector["detectrecord"][vnum]["first"] + detector["detectrecord"][vnum]["last"]
+                        origt = origt / 2
+                        destt = matchable["detectrecord"][vnum]["first"] + matchable["detectrecord"][vnum]["last"]
+                        destt = destt / 2
+                        tt = destt - origt
+                        keysave = str(detector["id"]) + str(matchable["id"])
+                        if not keysave in records: records[keysave] = {}
+                        records[keysave][vnum] = tt
+        for key, record in records.items():
+            with open(WRITELOC + "tt_" + str(key) + ".csv", "w") as writefile:
+                writefile.write("id,tt\n")
+                for key, value in record.items():
+                    writefile.write(str(key) + "," + str(value) + "\n")
+                        
                 
 #Class to interact with individual vehicles in VISSIM.
 class VehicleData(object):
@@ -167,11 +210,9 @@ class VehicleData(object):
             if detector["type"] in self.DetectableBy: continue
             val = random.random() * 100
             if val <= detector["detection-penr"]:
-                self.DetectableBy.add(detector["type"])
+                self.DetectableBy.append(detector["type"])
         
 
 
-if __name__ == "__main__":
-    main()
 if __name__ == "__main__":
     main()
