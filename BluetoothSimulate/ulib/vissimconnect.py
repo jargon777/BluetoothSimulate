@@ -326,7 +326,7 @@ class VissimSignal(object):
         '''
         RBC_plan = (([{"desc":"E", "group": 6, "rank":0}], [{"desc":"S", "group": 8, "rank":0}]),
                     ([{"desc":"W", "group": 2, "rank":0}], [{"desc":"N", "group": 4, "rank":0}]))
-        signal_rules = {"plan":RBC_plan, "min-green":{1:150, 3:150, 5:150, 7:150, 2:150, 4:150, 6:150, 8:150}} #150 = 30 simulated seconds, 50 = 10 simulated seconds
+        signal_rules = {"plan":RBC_plan, "min-green":{1:450, 3:450, 5:450, 7:450, 2:450, 4:450, 6:450, 8:450}} #150 = 30 simulated seconds, 50 = 10 simulated seconds
         self.RBCLogicControl = RBC(signal_rules, time)
         
         #Add signals to the groups and the initialize their state
@@ -358,12 +358,7 @@ class VissimSignal(object):
         #    self.RBCLogicControl.TransitionSignal(time)
         self.PushSignal = self.RBCLogicControl.AdvancePhase(timestep) #checks if phases can be advanced and advances them.
         self._PushSignalPhase() #re-push signal phases if VISSIM did not change them.
-        
-#Class to hold detectors we are simulating in VISSIM
-class VehicleDetector(object):
-    def __init__(self):
-        pass
-    
+           
 #collects statistics from VISSIM.
 class NetworkPerformance():
     def __init__(self):
@@ -405,6 +400,126 @@ class NetworkPerformance():
         self.RewardVehicles = 0
         return reward
              
+
+class VehicleDetectors():
+    def __init__(self, messagerelay, detectorfile):
+        self.Detectors = {}  
+        self.CurrentSimulationRun = 0
+        self.MessageRelay = messagerelay
+        self.detectorfile = detectorfile
+        self.matchedTT = {}
+        
+        self._loadDetectors()  
+            
+    
+    #VERSION 2 METHODS - Poll All Detectors
+    def PollAllDetectors(self, time, ActiveVehicles):
+        for detector in self.Detectors:
+            if (time % detector["pollrate"] == 0):
+                for veh in ActiveVehicles:
+                    veh = ActiveVehicles[veh]
+                    if detector["type"] in veh.DetectableBy:
+                        if self._CheckInCircle(veh.Coord, detector):
+                            #raw detections stores the list of detections as they happen
+                            detector["rawdetections"].append([time, veh.Number])
+                            
+                            #an aggregated record is also stored
+                            if not veh.Number in detector["detectrecord"]:
+                                detector["detectrecord"][veh.Number] = {}
+                                detector["detectrecord"][veh.Number]["first"] = time
+                                detector["detectrecord"][veh.Number]["detect"] = 0
+                            detector["detectrecord"][veh.Number]["last"] = time
+                            detector["detectrecord"][veh.Number]["detect"] += 1
+                            
+    #VERSION 2 METHOD - loads detectors from the settings file
+    def _loadDetectors(self):
+        with open(self.detectorfile) as df:
+            self.Detectors = json.load(df)
+      
+    #VERSION 2 METHOD - check if vehicle coord in detector                 
+    def _CheckInCircle(self, veh_coord, detector):
+        veh_x = float(veh_coord[0])
+        veh_y = float(veh_coord[1])
+        det_x = float(detector["coord"][0])
+        det_y = float(detector["coord"][1])
+        det_range = float(detector["range"])
+        dist = math.pow((veh_x - det_x), 2) + math.pow((veh_y - det_y), 2)
+        if (dist < math.pow(det_range, 2)): return True
+        else: return False           
+    
+    #VERSION 2 METHOD - Dumps records to file    
+    def DumpRecords(self, writeloc, prefix=""):
+        self.MessageRelay.StatusUpdate("Dumping CSV File")
+        for detector in self.Detectors:
+            with open(writeloc + prefix + str(detector["id"]) + "_agg.csv", "w") as writefile:
+                writefile.write("id,first,last,hits\n")
+                for key, value in detector["detectrecord"].items():
+                    writefile.write(str(key) + "," + str(value["first"]) + "," + str(value["last"]) + "," + str(value["detect"]) + "\n")
+    
+    def matchVehicles(self):
+        records = {}
+        #iterate through detector raw records and find matches for each combination
+        for detector in self.Detectors:
+            for vnum in detector["detectrecord"]:
+                for matchable in self.Detectors:
+                    if matchable["id"] == detector["id"]: continue
+                    if vnum in matchable["detectrecord"]:
+                        origt = detector["detectrecord"][vnum]["first"] + detector["detectrecord"][vnum]["last"]
+                        origt = origt / 2
+                        destt = matchable["detectrecord"][vnum]["first"] + matchable["detectrecord"][vnum]["last"]
+                        destt = destt / 2
+                        tt = destt - origt
+                        if (tt < 0): continue #skip this record if it is going the wrong direciton
+                        keysave = str(detector["id"]) + "TO" + str(matchable["id"])
+                        if not keysave in records: records[keysave] = {}
+                        records[keysave][vnum] = tt
+                        #save the total traveltime
+                        if not "total_travel_time" in records[keysave]: records[keysave]["total_travel_time"] = tt
+                        else: records[keysave]["total_travel_time"] += tt
+                
+        self.matchedTT = records
+        
+    #returns the movement times and volumes 
+    def ReturnMovementTimes(self, principle_key, rematch=False):
+        if rematch: self.matchVehicles()
+        records = self.matchedTT
+        tt_vol = {}
+        for key, record in records.items():
+            if "middle" in key: continue
+            if principle_key + "TO" in key:
+                tt_vol[key] = [0,0]
+                tt_vol[key][0] = record["total_travel_time"] #total travel time
+                tt_vol[key][1] = len(record) - 1 #number of vehicles
+        
+        return tt_vol                
+                
+        
+        
+    #writes the existing records to file and then flushes the record. Use when implementing a new timing plan.
+    def ArchiveRecords(self, time, writeloc, only_totaltt=False, rematch=False):
+        prefix = "archive_to" + str(time)
+        if rematch: self.matchVehicles()
+        self.DumpDirectionalTT(writeloc, only_totaltt, prefix)
+        self.DumpRecords(writeloc, prefix)
+        
+        #clear arcive records
+        self._loadDetectors()
+    
+    #VERSION 2 Metohd - Dumps Directional Travle Times                
+    def DumpDirectionalTT(self, writeloc, only_totaltt=False, prefix=""):
+        self.matchVehicles()
+        records = self.matchedTT
+        for key, record in records.items():
+            with open(writeloc + prefix + "tt_" + str(key) + ".csv", "w") as writefile:
+                writefile.write("id,tt\n")
+                if only_totaltt:
+                    key = "total_travel_time"
+                    value = record["total_travel_time"]
+                    writefile.write(str(key) + "," + str(value) + "\n")
+                else:
+                    for key, value in record.items():
+                        writefile.write(str(key) + "," + str(value) + "\n")      
+    
 class NetworkData():
     def __init__(self, messagerelay, detectorfile):
         self.ActiveVehicles = {}#dict to hold all the vehicles currently on the network
@@ -416,10 +531,7 @@ class NetworkData():
         self.Performance = NetworkPerformance()
         
         #Bluetooth Extension Methods (Version 2)
-        self.Detectors = {}  
-        self.CurrentSimulationRun = 0
-        self.MessageRelay = messagerelay
-        self._loadDetectors(detectorfile)        
+        self.VehicleDetectors = VehicleDetectors(messagerelay, detectorfile)  
  
     #VERSION 1 METHOD - Activates Signals
     def ActivateSignals(self, VISSIM, cur_time):
@@ -491,74 +603,11 @@ class NetworkData():
                 self.ActiveVehicles[v_num] = vehicle
                 self._UpdatePerformance(vehicle)
             else:
-                self.ActiveVehicles[v_num] = VehicleData(v_num, link_on, linkpos, None, None, coords, speed, self.Detectors)
+                self.ActiveVehicles[v_num] = VehicleData(v_num, link_on, linkpos, None, None, coords, speed, self.VehicleDetectors.Detectors)
 
-    #VERSION 2 METHODS - Poll All Detectors
-    def PollAllDetectors(self, time):
-        for detector in self.Detectors:
-            if (time % detector["pollrate"] == 0):
-                for veh in self.ActiveVehicles:
-                    veh = self.ActiveVehicles[veh]
-                    if detector["type"] in veh.DetectableBy:
-                        if self._CheckInCircle(veh.Coord, detector):
-                            #raw detections stores the list of detections as they happen
-                            detector["rawdetections"].append([time, veh.Number])
-                            
-                            #an aggregated record is also stored
-                            if not veh.Number in detector["detectrecord"]:
-                                detector["detectrecord"][veh.Number] = {}
-                                detector["detectrecord"][veh.Number]["first"] = time
-                                detector["detectrecord"][veh.Number]["detect"] = 0
-                            detector["detectrecord"][veh.Number]["last"] = time
-                            detector["detectrecord"][veh.Number]["detect"] += 1
-                            
-    #VERSION 2 METHOD - loads detectors from the settings file
-    def _loadDetectors(self, detectorfile):
-        with open(detectorfile) as df:
-            self.Detectors = json.load(df)
-      
-    #VERSION 2 METHOD - check if vehicle coord in detector                 
-    def _CheckInCircle(self, veh_coord, detector):
-        veh_x = float(veh_coord[0])
-        veh_y = float(veh_coord[1])
-        det_x = float(detector["coord"][0])
-        det_y = float(detector["coord"][1])
-        det_range = float(detector["range"])
-        dist = math.pow((veh_x - det_x), 2) + math.pow((veh_y - det_y), 2)
-        if (dist < math.pow(det_range, 2)): return True
-        else: return False           
-    
-    #VERSION 2 METHOD - Dumps records to file    
-    def DumpRecords(self, writeloc):
-        self.MessageRelay.StatusUpdate("Dumping CSV File")
-        for detector in self.Detectors:
-            with open(writeloc + str(detector["id"]) + "_agg.csv", "w") as writefile:
-                writefile.write("id,first,last,hits\n")
-                for key, value in detector["detectrecord"].items():
-                    writefile.write(str(key) + "," + str(value["first"]) + "," + str(value["last"]) + "," + str(value["detect"]) + "\n")
-    
-    #VERSION 2 Metohd - Dumps Directional Travle Times                
-    def DumpDirectionalTT(self, writeloc):
-        records = {}
-        for detector in self.Detectors:
-            for vnum in detector["detectrecord"]:
-                for matchable in self.Detectors:
-                    if matchable["id"] == detector["id"]: continue
-                    if vnum in matchable["detectrecord"]:
-                        origt = detector["detectrecord"][vnum]["first"] + detector["detectrecord"][vnum]["last"]
-                        origt = origt / 2
-                        destt = matchable["detectrecord"][vnum]["first"] + matchable["detectrecord"][vnum]["last"]
-                        destt = destt / 2
-                        tt = destt - origt
-                        keysave = str(detector["id"]) + str(matchable["id"])
-                        if not keysave in records: records[keysave] = {}
-                        records[keysave][vnum] = tt
-        for key, record in records.items():
-            with open(writeloc + "tt_" + str(key) + ".csv", "w") as writefile:
-                writefile.write("id,tt\n")
-                for key, value in record.items():
-                    writefile.write(str(key) + "," + str(value) + "\n")
-                                       
+    #Passes the poll all detectors command to the detectors class
+    def PollAllDetectors(self, step):   
+        self.VehicleDetectors.PollAllDetectors(step, self.ActiveVehicles)                                
 #Class to interact with individual vehicles in VISSIM.
 class VehicleData(object):
     def __init__(self, number, currentlink, linkpos, routedesc, nextlink, coord, curspeed, detectors):

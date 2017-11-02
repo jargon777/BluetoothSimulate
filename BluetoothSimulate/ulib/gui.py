@@ -14,6 +14,7 @@ import numpy
 from PIL import Image, ImageTk
 
 from ulib import vissimconnect
+from ulib import learning
 #from ulib import learning
 
 import numpy as np
@@ -23,6 +24,7 @@ import queue
 
 from msilib import Control
 import matplotlib.pyplot as plt
+from ulib.learning import GradientDescentSelectTime
 
 
 
@@ -45,22 +47,31 @@ class VissimThread(threading.Thread):
         try:
             self.VissimControl = vissimconnect.VissimConnect(self.foname, self.detectorfile, self.populatesteps) #main class to interact with VISSIM. See imported ulib/vissimconnect.
             self.VissimControl.Data.ActivateSignals(self.VissimControl.Vissim, self.VissimControl.step) #activate the signals which we are controlling.
+            self.Optimiser = GradientDescentSelectTime(self.VissimControl)
             #learning.runLearning(self.VissimControl, self.guiQ, self.guiQLock, self.startDay, self.resetDay)
             
-            i = 0
+            i = 1
             STEPS = 37000
             WRITELOC = "out/"
-            BACKUPSTEPS = 99999
+            ACTIONINTERVAL = 500
             ACTIONMODE = 1 #two actions only for the learning signal control
             while i < STEPS:
                 self.VissimControl.advanceSimulation()
                 ActionsAllowed = self.VissimControl.ActionsAllowed(ACTIONMODE)
                 if 1 in ActionsAllowed:
                     self.VissimControl.doAction(1) #advance the signals.
-                if i % BACKUPSTEPS == 0:
-                    self.VissimControl.Data.DumpRecords(WRITELOC)
-                    self.VissimControl.Data.DumpDirectionalTT(WRITELOC)
-                
+                if i % ACTIONINTERVAL == 0:
+                    #times = self.VissimControl.Data
+                    NB_time = self.VissimControl.Data.Signals[1].RBCLogicControl.TimingRules["MinGreens"][6]
+                    WB_time = self.VissimControl.Data.Signals[1].RBCLogicControl.TimingRules["MinGreens"][8]
+                    
+                    times = self.Optimiser.SelectSplit(i, WRITELOC, NB_time, WB_time)
+                    self.VissimControl.Data.Signals[1].RBCLogicControl.TimingRules["MinGreens"][6] = times[0]
+                    self.VissimControl.Data.Signals[1].RBCLogicControl.TimingRules["MinGreens"][2] = times[0]
+                    self.VissimControl.Data.Signals[1].RBCLogicControl.TimingRules["MinGreens"][8] = times[1]
+                    self.VissimControl.Data.Signals[1].RBCLogicControl.TimingRules["MinGreens"][4] = times[1]
+                    self.Optimiser.DumpPerformanceMeasures(WRITELOC)
+                    
                 if i % 250 == 0:
                     print("Step " + str(i) + " completed")
                     

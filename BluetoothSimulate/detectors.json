@@ -8,7 +8,8 @@
 		"detection-penr": 100,
 		"rawdetections": [],
 		"detectrecord": {},
-		"comment": "centre detector at the middle of the intersection"
+		"comment": "centre detector at the middle of the intersection",
+		"word-location": "centre"
 	},
 	{
 		"id": "bluetoothsouth",
@@ -19,7 +20,8 @@
 		"detection-penr": 100,
 		"rawdetections": [],
 		"detectrecord": {},
-		"comment": "south detector at 300m from centre"
+		"comment": "south detector at 300m from centre",
+		"word-location": "south"
 	},
 	{
 		"id": "bluetoothnorth",
@@ -30,7 +32,8 @@
 		"detection-penr": 100,
 		"rawdetections": [],
 		"detectrecord": {},
-		"comment": "north detector at 300m from centre"
+		"comment": "north detector at 300m from centre",
+		"word-location": "north"
 	},
 	{
 		"id": "bluetootheast",
@@ -41,7 +44,8 @@
 		"detection-penr": 100,
 		"rawdetections": [],
 		"detectrecord": {},
-		"comment": "east detector at 300m from centre"
+		"comment": "east detector at 300m from centre",
+		"word-location": "east"
 	},
 	{
 		"id": "bluetoothwest",
@@ -52,6 +56,7 @@
 		"detection-penr": 100,
 		"rawdetections": [],
 		"detectrecord": {},
-		"comment": "west detector at 300m from centre"
+		"comment": "west detector at 300m from centre",
+		"word-location": "west"
 	}
 ]
