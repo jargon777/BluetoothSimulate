@@ -28,7 +28,6 @@ class GradientDescentSelectTime():
         
         #choose a direction to modify the split times
         if self.previous_step_size > self.precision:
-            self.Xs.append(self.active_X) # record the previous X
             system_tot_tt = 0
             system_tot_v = 0
             for key, vol in vols.items():
@@ -40,14 +39,15 @@ class GradientDescentSelectTime():
             if len(self.system_av_tt) == 0: gradient = self.precision*10 #go 10x the precision in the positive direction.
             else:
                 distance = self.system_av_tt[-1] - system_av_tt
-                span = (self.Xs[-1] - self.active_X) * 10 #multiply by 10 to more easily understand consequences. Single units are 0.1 of the ratio
-                gradient = distance/span * self.gamma * 10 #because we will apply the sigmoid
-                gradient = (gradient) / ((1 + gradient**2)**0.5) * 0.1 #apply a sigmoid function to the gradient limited to 0.1
-                
+                span = (self.Xs[-1] - self.active_X) * -10 #multiply by 10 to more easily understand consequences. Single units are 0.1 of the ratio. Invert to get the negative ROC.
+                if not span == 0:
+                    gradient = distance/span * self.gamma * 10 #because we will apply the sigmoid
+                    gradient = (gradient) / ((1 + gradient**2)**0.5) * 0.1 #apply a sigmoid function to the gradient limited to 0.1
+                else:
+                    gradient = 0
                       
             self.Xs.append(self.active_X)
             self.system_av_tt.append(system_av_tt)
-            
             self.active_X += gradient
             if self.active_X < 0.1: self.active_X = 0.1
             if self.active_X > 0.9: self.active_X = 0.9
@@ -57,7 +57,9 @@ class GradientDescentSelectTime():
             
         self.VissimControl.Data.VehicleDetectors.ArchiveRecords(i, writeloc, True, False) #archive all the old data and erase it, restarting collection
         time_WB = time_WB + time_NB
-        time_NB *= self.active_X
+        time_NB = time_WB
+        time_NB = (time_NB*self.active_X + 5) // 10 * 10 #round by adding 5 and then floor division
+        print("Resulting NS time is: " + str(time_NB))
         time_WB -= time_NB
         return [time_NB, time_WB]
         
