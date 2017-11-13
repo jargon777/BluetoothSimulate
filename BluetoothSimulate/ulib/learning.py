@@ -15,6 +15,7 @@ class GradientDescentSelectTime():
         self.system_av_tt = []
         self.current_step = 0 
         self.sigmoid_ceiling = 0.1 #a sigmoid function is used to prevent a large gradient. This is the maximum change that will be allowed to X
+        self.fastest_tt = {}
     
     def SelectSplit(self, i, writeloc, time_NB, time_WB):
         self.VissimControl.Data.VehicleDetectors.matchVehicles() #match vehilces in the TT record
@@ -30,28 +31,39 @@ class GradientDescentSelectTime():
         if self.previous_step_size > self.precision:
             system_tot_tt = 0
             system_tot_v = 0
-            for key, vol in vols.items():
+            a_del = {}
+            t_tt = {}
+            t_vol = {}
+            #temporarily identify critical movements by grouping to movement
+            for dir, vol in vols.items():
+                a_del[dir] = {}
+                if not dir in self.fastest_tt: self.fastest_tt[dir] = {}
                 for key, movement in vol.items():
+                    if not key in self.fastest_tt[dir]: self.fastest_tt[dir][key] = movement[2]
+                    elif self.fastest_tt[dir][key] > movement[2]: self.fastest_tt[dir][key] = movement[2]
+                    a_del[dir][key] = (movement[0] - (self.fastest_tt[dir][key] * movement[1])) / movement[1] #compute weighted average for average delay
                     system_tot_tt += movement[0]
                     system_tot_v += movement[1]
-            system_av_tt = system_tot_tt / system_tot_v
-            gradient = 0
-            if len(self.system_av_tt) == 0: gradient = self.precision*10 #go 10x the precision in the positive direction.
-            else:
-                distance = self.system_av_tt[-1] - system_av_tt
-                span = (self.Xs[-1] - self.active_X) * -10 #multiply by 10 to more easily understand consequences. Single units are 0.1 of the ratio. Invert to get the negative ROC.
-                if not span == 0:
-                    gradient = distance/span * self.gamma * 10 #because we will apply the sigmoid
-                    gradient = (gradient) / ((1 + gradient**2)**0.5) * 0.1 #apply a sigmoid function to the gradient limited to 0.1
-                else:
-                    gradient = 0
-                      
+                
+            system_av_tt = system_tot_tt / system_tot_v 
+            #identify the critical movements
+            NB_SB_crit = 0
+            EB_WB_crit = 0
+            for dir, delays in a_del.items():
+                for key, movement in delays.items():
+                    if dir == "NB" or dir == "SB":
+                        if NB_SB_crit < movement: NB_SB_crit = movement
+                    elif dir == "EB" or dir == "WB":
+                        if EB_WB_crit < movement: EB_WB_crit = movement
+                        
+            
+
             self.Xs.append(self.active_X)
             self.system_av_tt.append(system_av_tt)
-            self.active_X += gradient
+            self.active_X = NB_SB_crit / (NB_SB_crit + EB_WB_crit)
+
             if self.active_X < 0.1: self.active_X = 0.1
             if self.active_X > 0.9: self.active_X = 0.9
-            print("Gradient is " + str(gradient))
             print("New X is " + str(self.active_X))
             print("Old X was" + str(self.Xs[-1]))
             

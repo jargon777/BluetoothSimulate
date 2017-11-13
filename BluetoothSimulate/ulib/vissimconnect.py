@@ -85,6 +85,12 @@ class VissimConnect(object):
         self.Data.PollAllDetectors(self.step)
         self.Data.CheckControllers(self.step)
     
+    def restartSimulation(self):
+        self.Vissim.Simulation.stop()
+        self.MessageRelay.StatusUpdate("Populating VISSIM with Cars by running some steps after restarting")   
+        self._populateVissim() #Populate the network
+        self.Data.ActivateSignals(self.Vissim, self.step)
+    
     def doAction(self, selected_action):
         if selected_action > 0:
             last_times = "Doing an Action. Last Green Times: "
@@ -476,6 +482,8 @@ class VehicleDetectors():
                         #save the total traveltime
                         if not "total_travel_time" in records[keysave]: records[keysave]["total_travel_time"] = tt
                         else: records[keysave]["total_travel_time"] += tt
+                        if not "fastest_travel_time" in records[keysave]: records[keysave]["fastest_travel_time"] = tt
+                        elif records[keysave]["fastest_travel_time"] > tt: records[keysave]["fastest_travel_time"] = tt
                 
         self.matchedTT = records
         
@@ -487,10 +495,10 @@ class VehicleDetectors():
         for key, record in records.items():
             if "middle" in key: continue
             if principle_key + "TO" in key:
-                tt_vol[key] = [0,0]
+                tt_vol[key] = [0,0,0]
                 tt_vol[key][0] = record["total_travel_time"] #total travel time
-                tt_vol[key][1] = len(record) - 1 #number of vehicles
-        
+                tt_vol[key][1] = len(record) - 2 #number of vehicles (exclude the two extra entries of fastest and total.
+                tt_vol[key][2] = record["fastest_travel_time"]
         return tt_vol                
                 
         
