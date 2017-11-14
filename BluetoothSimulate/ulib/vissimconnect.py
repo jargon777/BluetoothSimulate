@@ -37,6 +37,7 @@ import math
 import random
 
 
+
 class MessageRelay(object):
     def __init__(self):
         pass
@@ -192,14 +193,14 @@ class RBC(object):
         #ASSIGN YELLOW VALUE
         if (yellows == None):
             for SG in self.TimingRules["MinGreens"]:
-                self.TimingRules["YellowTimes"][SG] = 20 #give default of 3s ish yellows
+                self.TimingRules["YellowTimes"][SG] = 30 #give default of 3s ish yellows
         else:
             self.TimingRules["YellowTimes"] = yellows
         
         #ASSIGN RED TIME    
         if (allreds == None):
             for SG in self.TimingRules["MinGreens"]:
-                self.TimingRules["AllRedTimes"][SG] = 15 #give default of 2s ish yellows
+                self.TimingRules["AllRedTimes"][SG] = 20 #give default of 2s ish yellows
         else:
             self.TimingRules["AllRedTimes"] = allreds
             
@@ -332,7 +333,7 @@ class VissimSignal(object):
         '''
         RBC_plan = (([{"desc":"E", "group": 6, "rank":0}], [{"desc":"S", "group": 8, "rank":0}]),
                     ([{"desc":"W", "group": 2, "rank":0}], [{"desc":"N", "group": 4, "rank":0}]))
-        signal_rules = {"plan":RBC_plan, "min-green":{1:450, 3:450, 5:450, 7:450, 2:450, 4:450, 6:450, 8:450}} #150 = 30 simulated seconds, 50 = 10 simulated seconds
+        signal_rules = {"plan":RBC_plan, "min-green":{1:400, 3:400, 5:400, 7:400, 2:400, 4:400, 6:400, 8:400}} #150 = 30 simulated seconds, 50 = 10 simulated seconds
         self.RBCLogicControl = RBC(signal_rules, time)
         
         #Add signals to the groups and the initialize their state
@@ -484,7 +485,7 @@ class VehicleDetectors():
                         else: records[keysave]["total_travel_time"] += tt
                         if not "fastest_travel_time" in records[keysave]: records[keysave]["fastest_travel_time"] = tt
                         elif records[keysave]["fastest_travel_time"] > tt: records[keysave]["fastest_travel_time"] = tt
-                
+                      
         self.matchedTT = records
         
     #returns the movement times and volumes 

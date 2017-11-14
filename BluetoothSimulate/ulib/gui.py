@@ -53,7 +53,7 @@ class VissimThread(threading.Thread):
             i = 1
             STEPS = 99999999
             WRITELOC = "out/"
-            ACTIONINTERVAL = 50000
+            ACTIONINTERVAL = 25000
             ACTIONMODE = 1 #two actions only for the learning signal control
             while i < STEPS:
                 self.VissimControl.advanceSimulation()

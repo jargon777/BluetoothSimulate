@@ -3,6 +3,7 @@ Created on Apr 3, 2017
 
 @author: Matthew Muresan
 '''
+from itertools import cycle
 
 class GradientDescentSelectTime():
     def __init__(self, VissimControl):
@@ -16,6 +17,9 @@ class GradientDescentSelectTime():
         self.current_step = 0 
         self.sigmoid_ceiling = 0.1 #a sigmoid function is used to prevent a large gradient. This is the maximum change that will be allowed to X
         self.fastest_tt = {}
+        
+        self.highest_delays = {"EBWB": [], "NBSB": []}
+        self.highest_saturation = {"EBWB": [], "NBSB": []}
     
     def SelectSplit(self, i, writeloc, time_NB, time_WB):
         self.VissimControl.Data.VehicleDetectors.matchVehicles() #match vehilces in the TT record
@@ -49,15 +53,37 @@ class GradientDescentSelectTime():
             #identify the critical movements
             NB_SB_crit = 0
             EB_WB_crit = 0
+            NB_SB_crit_time = 0
+            EB_WB_crit_time = 0
+            cycletime = time_NB/10 + time_WB/10 + 10 #/10 because vissim reports in 100ths of seconds, and add back on the lost time.
+            green_NB = time_NB/10
+            green_WB = time_WB/10
             for dir, delays in a_del.items():
                 for key, movement in delays.items():
+                    movement = movement/10 #times are in hundredth seconds.
+                    movement -= 4 #to account for the liklihood that the "fastest" value is the extremities based on the polling rate. Temporary fix.
                     if dir == "NB" or dir == "SB":
-                        if NB_SB_crit < movement: NB_SB_crit = movement
+                        if not movement <= 0:
+                            saturation = (-(cycletime**2-2*cycletime*movement-2*cycletime*green_NB+green_NB**2)/(2*movement*green_NB))
+                            if saturation < 0.1: saturation = 0.1 #enforce a floor for the saturation.
+                            print("Movement " + str(key) + ": " + str(movement) + " Saturation: " + str(saturation))
+                            if saturation > NB_SB_crit: 
+                                NB_SB_crit = saturation
+                                NB_SB_crit_time = movement
                     elif dir == "EB" or dir == "WB":
-                        if EB_WB_crit < movement: EB_WB_crit = movement
-                        
+                        if not movement <= 0:
+                            saturation = (-(cycletime**2-2*cycletime*movement-2*cycletime*green_WB+green_WB**2)/(2*movement*green_WB))
+                            if saturation < 0.1: saturation = 0.1 #enforce a floor for the saturation.
+                            print("Movement " + str(key) + ": " + str(movement) + " Saturation: " + str(saturation))
+                            if saturation > EB_WB_crit: 
+                                EB_WB_crit = saturation
+                                EB_WB_crit_time = movement
             
-
+            
+            self.highest_delays["EBWB"].append(EB_WB_crit_time)
+            self.highest_delays["NBSB"].append(NB_SB_crit_time)
+            self.highest_saturation["EBWB"].append(EB_WB_crit)
+            self.highest_saturation["NBSB"].append(NB_SB_crit)
             self.Xs.append(self.active_X)
             self.system_av_tt.append(system_av_tt)
             self.active_X = NB_SB_crit / (NB_SB_crit + EB_WB_crit)
@@ -67,7 +93,7 @@ class GradientDescentSelectTime():
             print("New X is " + str(self.active_X))
             print("Old X was" + str(self.Xs[-1]))
             
-        self.VissimControl.Data.VehicleDetectors.ArchiveRecords(i, writeloc, True, False) #archive all the old data and erase it, restarting collection
+        self.VissimControl.Data.VehicleDetectors.ArchiveRecords(i, writeloc, False, False) #archive all the old data and erase it, restarting collection
         time_WB = time_WB + time_NB
         time_NB = time_WB
         time_NB = (time_NB*self.active_X + 5) // 10 * 10 #round by adding 5 and then floor division
@@ -80,10 +106,12 @@ class GradientDescentSelectTime():
     def DumpPerformanceMeasures(self, writeloc, prefix=""):
         i = 0
         with open(writeloc + prefix + "performance_measures" + ".csv", "w") as writefile:
-            writefile.write("X,av_tt\n")
+            writefile.write("X,av_tt,maxdelay_NBSB,saturation_NBSB,maxdelay_EBWB,saturation_EBWB\n")
             print(self.Xs)
             print(self.system_av_tt)
             for X in self.Xs:
-                writefile.write(str(X) + "," + str(self.system_av_tt[i]) + "\n")
+                writefile.write(str(X) + "," + str(self.system_av_tt[i]) + "," 
+                                + str(self.highest_delays["NBSB"][i]) + "," + str(self.highest_saturation["NBSB"][i]) + "," 
+                                + str(self.highest_delays["EBWB"][i]) + "," + str(self.highest_saturation["EBWB"][i]) + "\n")
                 i += 1
             

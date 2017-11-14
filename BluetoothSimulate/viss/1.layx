@@ -2,38 +2,41 @@
 <layout version="101">
 	<defaultWindowLayouts>
 		<windowLayoutDefault floating="false" height="503" no="1" positionX="225" positionY="1202" subType="Parent PEDESTRIANCOMPOSITION" type="CoupledListWindow" width="1695"/>
+		<windowLayoutDefault floating="false" height="255" no="2" positionX="0" positionY="567" subType="Parent VEHICLEROUTINGDECISIONSTATIC" type="CoupledListWindow" width="1500"/>
+		<windowLayoutDefault floating="false" height="255" no="3" positionX="0" positionY="567" subType="Parent SIGNALCONTROLLER" type="CoupledListWindow" width="1500"/>
+		<windowLayoutDefault floating="false" height="255" no="4" positionX="0" positionY="567" subType="Parent SIMULATIONRUN" type="CoupledListWindow" width="1500"/>
+		<windowLayoutDefault floating="false" height="255" no="5" positionX="0" positionY="567" subType="Parent VEHICLEINPUT" type="CoupledListWindow" width="1500"/>
+		<windowLayoutDefault floating="false" height="277" no="6" positionX="0" positionY="567" subType="Parent CONFLICTAREA" type="CoupledListWindow" width="1500"/>
 	</defaultWindowLayouts>
 	<currentWindowLayouts>
 		<windowLayoutCurrent no="1">
 			<dockAreaPanes>
-				<dockableAreaPane childPaneStyle="2" dockedLocation="2" floating="false" floatingLocationX="1600" floatingLocationY="520" keyText="" no="1" paneType="3" sizeHeight="768" sizeWidth="60" tag="" text="" textTabResolved="" visible="true">
+				<dockableAreaPane childPaneStyle="2" dockedLocation="2" floating="false" floatingLocationX="1600" floatingLocationY="520" keyText="" no="1" paneType="3" sizeHeight="768" sizeWidth="65" tag="" text="" textTabResolved="" visible="true">
 					<dockChildPanes>
-						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="true" keyText="Quick View1" no="1" paneLayoutNo="0" paneType="1" pinned="true" sizeHeight="746" sizeWidth="60" subType="" tag="" text="Quick View" textTabResolved="Quick View" type="PTV.Vision.Controls.ObjectPropertiesWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
+						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="true" keyText="Quick View1" no="1" paneLayoutNo="0" paneType="1" pinned="true" sizeHeight="746" sizeWidth="65" subType="" tag="" text="Quick View" textTabResolved="Quick View" type="PTV.Vision.Controls.ObjectPropertiesWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
 						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="false" keyText="Smart Map1" no="2" paneLayoutNo="2" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="" tag="" text="Smart Map" textTabResolved="Smart Map" type="PTV.Vision.Controls.SmartMapControl, ControlUtils, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
 					</dockChildPanes>
 				</dockableAreaPane>
-				<dockableAreaPane childPaneStyle="2" dockedLocation="3" floating="false" floatingLocationX="719" floatingLocationY="900" keyText="" no="2" paneType="3" sizeHeight="138" sizeWidth="1535" tag="" text="" textTabResolved="" visible="true">
+				<dockableAreaPane childPaneStyle="2" dockedLocation="1" floating="false" floatingLocationX="-1" floatingLocationY="-1" keyText="" no="2" paneType="3" sizeHeight="768" sizeWidth="155" tag="" text="" textTabResolved="" visible="true">
 					<dockChildPanes>
-						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="false" keyText="Conflict Areas1" no="1" paneLayoutNo="1" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="Parent CONFLICTAREA" tag="" text="Conflict Areas" textTabResolved="Conflict Areas" type="PTV.Vision.Controls.CoupledListWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
-						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="false" keyText="Vehicle Inputs1" no="2" paneLayoutNo="2" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="Parent VEHICLEINPUT" tag="" text="Vehicle Inputs" textTabResolved="Vehicle Inputs" type="PTV.Vision.Controls.CoupledListWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
-						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="false" keyText="Static Vehicle Routing Decisions1" no="3" paneLayoutNo="3" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="Parent VEHICLEROUTINGDECISIONSTATIC" tag="" text="Static Vehicle Routing Decisions / Static Vehicle Routes" textTabResolved="Static Vehicle Routing Decisions / Static Vehicle Routes" type="PTV.Vision.Controls.CoupledListWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
-						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="false" keyText="Signal Controllers1" no="4" paneLayoutNo="4" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="Parent SIGNALCONTROLLER" tag="" text="Signal Controllers / Signal Groups" textTabResolved="Signal Controllers / Signal Groups" type="PTV.Vision.Controls.CoupledListWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
-						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="false" keyText="Signal Controllers2" no="5" paneLayoutNo="5" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="Parent SIGNALCONTROLLER" tag="" text="Signal Controllers / Signal Groups (2)" textTabResolved="Signal Controllers / Signal Groups (2)" type="PTV.Vision.Controls.CoupledListWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
-						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="false" keyText="Signal Controllers3" no="6" paneLayoutNo="6" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="Parent SIGNALCONTROLLER" tag="" text="Signal Controllers / Signal Groups (3)" textTabResolved="Signal Controllers / Signal Groups (3)" type="PTV.Vision.Controls.CoupledListWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
-						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="false" keyText="Signal Controllers4" no="7" paneLayoutNo="7" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="Parent SIGNALCONTROLLER" tag="" text="Signal Controllers / Signal Groups (4)" textTabResolved="Signal Controllers / Signal Groups (4)" type="PTV.Vision.Controls.CoupledListWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
-						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="true" keyText="Simulation Runs1" no="8" paneLayoutNo="8" paneType="1" pinned="true" sizeHeight="116" sizeWidth="1535" subType="Parent SIMULATIONRUN" tag="" text="Simulation Runs" textTabResolved="Simulation Runs" type="PTV.Vision.Controls.CoupledListWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
-					</dockChildPanes>
-				</dockableAreaPane>
-				<dockableAreaPane childPaneStyle="2" dockedLocation="1" floating="false" floatingLocationX="-1" floatingLocationY="-1" keyText="" no="3" paneType="3" sizeHeight="625" sizeWidth="33" tag="" text="" textTabResolved="" visible="true">
-					<dockChildPanes>
-						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="true" keyText="Network Objects1" no="1" paneLayoutNo="0" paneType="1" pinned="true" sizeHeight="603" sizeWidth="33" subType="" tag="" text="Network Objects" textTabResolved="Network Objects" type="PTV.Vision.Controls.MainWindowNetObjSelectionControl, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
+						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="true" keyText="Network Objects1" no="1" paneLayoutNo="0" paneType="1" pinned="true" sizeHeight="746" sizeWidth="155" subType="" tag="" text="Network Objects" textTabResolved="Network Objects" type="PTV.Vision.Controls.MainWindowNetObjSelectionControl, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
 						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="false" keyText="Levels1" no="2" paneLayoutNo="0" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="" tag="" text="Levels" textTabResolved="Levels" type="PTV.Vision.Controls.LevelSelectionControl, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
 						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="false" keyText="Backgrounds1" no="3" paneLayoutNo="0" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="" tag="" text="Backgrounds" textTabResolved="Backgrounds" type="PTV.Vision.Controls.BackgroundSelectionControl, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
 					</dockChildPanes>
 				</dockableAreaPane>
-				<dockableAreaPane childPaneStyle="1" dockedLocation="4" floating="false" floatingLocationX="-1" floatingLocationY="-1" keyText="" no="4" paneType="3" sizeHeight="625" sizeWidth="1497" tag="" text="" textTabResolved="" visible="true">
+				<dockableAreaPane childPaneStyle="1" dockedLocation="4" floating="false" floatingLocationX="-1" floatingLocationY="-1" keyText="" no="3" paneType="3" sizeHeight="768" sizeWidth="1370" tag="" text="" textTabResolved="" visible="true">
 					<dockChildPanes>
-						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="true" keyText="Network Editor1" no="1" paneLayoutNo="3" paneType="1" pinned="true" sizeHeight="625" sizeWidth="1497" subType="" tag="" text="Network Editor" textTabResolved="Network Editor" type="PTV.Vision.Controls.NetEditorControl, ControlUtils, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
+						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="true" isSelectedTab="true" keyText="Network Editor1" no="1" paneLayoutNo="3" paneType="1" pinned="true" sizeHeight="508" sizeWidth="1370" subType="" tag="" text="Network Editor" textTabResolved="Network Editor" type="PTV.Vision.Controls.NetEditorControl, ControlUtils, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
+						<dockableChildPane childPaneStyle="2" flyoutSizeHeight="0" flyoutSizeWidth="0" isDirectAreaChild="true" isSelectedTab="false" keyText="" no="2" paneLayoutNo="0" paneType="2" pinned="false" sizeHeight="255" sizeWidth="1370" subType="" tag="" text="" textTabResolved="" type="" visible="true">
+							<dockableChildPanes>
+								<objectRef key="1 3 3"/>
+								<objectRef key="1 3 4"/>
+								<objectRef key="1 3 5"/>
+							</dockableChildPanes>
+						</dockableChildPane>
+						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="false" isSelectedTab="false" keyText="Delay Measurements1" no="3" paneLayoutNo="1" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="Parent DELAYMEASUREMENT" tag="" text="Delay Measurements" textTabResolved="Delay Measurements" type="PTV.Vision.Controls.CoupledListWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
+						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="false" isSelectedTab="false" keyText="Static Vehicle Routing Decisions1" no="4" paneLayoutNo="2" paneType="1" pinned="true" sizeHeight="0" sizeWidth="0" subType="Parent VEHICLEROUTINGDECISIONSTATIC" tag="" text="Static Vehicle Routing Decisions / Static Vehicle Routes" textTabResolved="Static Vehicle Routing Decisions / Static Vehicle Routes" type="PTV.Vision.Controls.CoupledListWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
+						<dockableChildPane childPaneStyle="0" flyoutSizeHeight="-1" flyoutSizeWidth="-1" isDirectAreaChild="false" isSelectedTab="true" keyText="Simulation Runs1" no="5" paneLayoutNo="3" paneType="1" pinned="true" sizeHeight="233" sizeWidth="1370" subType="Parent SIMULATIONRUN" tag="" text="Simulation Runs" textTabResolved="Simulation Runs" type="PTV.Vision.Controls.CoupledListWindow, Controls, Version=7.0.13.0, Culture=neutral, PublicKeyToken=null" visible="true"/>
 					</dockChildPanes>
 				</dockableAreaPane>
 			</dockAreaPanes>
@@ -234,7 +237,7 @@
 			</selectableTypes>
 		</networkEditorLayout>
 		<networkEditorLayout name="" no="3" synchronization="1">
-			<camera lookAtPos3DX="0.000000" lookAtPos3DY="-99.292893" lookAtPos3DZ="99.292893" pos2DX="-69.813710" pos2DY="-224.311092" pos3DX="0.000000" pos3DY="-100.000000" pos3DZ="100.000000" zoom2D="1.429647"/>
+			<camera lookAtPos3DX="0.000000" lookAtPos3DY="-99.292893" lookAtPos3DZ="99.292893" pos2DX="-259.886193" pos2DY="-243.331128" pos3DX="0.000000" pos3DY="-100.000000" pos3DZ="100.000000" zoom2D="1.787059"/>
 			<gParSet>
 				<signalHeadGPars labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" lineColor="ff800000" objectVisibility="true" trafficSignalDisplay="1"/>
 				<stopSignGPars labelAttribute="NO" labelColor="ff000000" labelDecimals="3" labelFontSize="3" labelVisibility="false" lineColor="ffff8000" objectVisibility="true"/>
@@ -331,43 +334,23 @@
 	</networkEditorLayouts>
 	<listLayouts>
 		<listLayout childRelation="" exportListWhenSimulationFinished="false" name="" no="1" verticalSplitterPosition="0.500000">
-			<netObjectLParSet filtered="false" headerHeight="0.000000" netObjectTypeID="CONFLICTAREA" rowHeaderWidth="35.000000" rowHeight="0" showSimulationRunAggregates="true" showTimeIntervalAggregates="false" synchronization="true">
+			<netObjectLParSet filtered="false" headerHeight="0.000000" netObjectTypeID="DELAYMEASUREMENT" rowHeaderWidth="35.000000" rowHeight="0" showSimulationRunAggregates="true" showTimeIntervalAggregates="false" synchronization="false">
 				<attributeLPars>
-					<attributeListLayoutParameters alignment="1" attributeID="LINK1" columnWidth="40.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="2" attributeID="VISIBLINK1" columnWidth="67.000000" decimals="1" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="LINK2" columnWidth="40.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="2" attributeID="VISIBLINK2" columnWidth="67.000000" decimals="1" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="STATUS" columnWidth="48.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="2" attributeID="FRONTGAPDEF" columnWidth="78.000000" decimals="1" format="20" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="2" attributeID="REARGAPDEF" columnWidth="73.000000" decimals="1" format="20" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="2" attributeID="SAFDISTFACTDEF" columnWidth="87.000000" decimals="1" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="2" attributeID="ADDSTOPDIST" columnWidth="77.000000" decimals="1" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="3" attributeID="OBSADJLNS" columnWidth="68.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="2" attributeID="ANTICIPROUT" columnWidth="74.000000" decimals="1" format="3" quickViewRowHeight="0.000000" showUnits="true"/>
-					<attributeListLayoutParameters alignment="2" attributeID="AVOIDBLOCK" columnWidth="80.000000" decimals="1" format="3" quickViewRowHeight="0.000000" showUnits="true"/>
+					<attributeListLayoutParameters alignment="2" attributeID="NO" columnWidth="29.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="1" attributeID="NAME" columnWidth="45.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="1" attributeID="VEHTRAVTMMEAS" columnWidth="99.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
 				</attributeLPars>
 			</netObjectLParSet>
 		</listLayout>
-		<listLayout childRelation="" exportListWhenSimulationFinished="false" name="" no="2" verticalSplitterPosition="0.500000">
-			<netObjectLParSet filtered="false" headerHeight="0.000000" netObjectTypeID="VEHICLEINPUT" rowHeaderWidth="35.000000" rowHeight="0" showSimulationRunAggregates="true" showTimeIntervalAggregates="false" synchronization="true">
-				<attributeLPars>
-					<attributeListLayoutParameters alignment="2" attributeID="NO" columnWidth="27.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="NAME" columnWidth="43.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="LINK" columnWidth="33.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="2" attributeID="VOLUME(1)" columnWidth="66.000000" decimals="1" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="VEHCOMP(1)" columnWidth="78.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-				</attributeLPars>
-			</netObjectLParSet>
-		</listLayout>
-		<listLayout childRelation="VEHROUTSTA" exportListWhenSimulationFinished="false" name="" no="3" verticalSplitterPosition="0.345382">
+		<listLayout childRelation="VEHROUTSTA" exportListWhenSimulationFinished="false" name="" no="2" verticalSplitterPosition="0.500000">
 			<netObjectLParSet filtered="false" headerHeight="0.000000" netObjectTypeID="VEHICLEROUTINGDECISIONSTATIC" rowHeaderWidth="35.000000" rowHeight="0" showSimulationRunAggregates="true" showTimeIntervalAggregates="false" synchronization="false">
 				<attributeLPars>
-					<attributeListLayoutParameters alignment="2" attributeID="NO" columnWidth="27.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="NAME" columnWidth="43.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="LINK" columnWidth="33.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="2" attributeID="POS" columnWidth="61.000000" decimals="3" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="2" attributeID="NO" columnWidth="29.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="1" attributeID="NAME" columnWidth="45.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="1" attributeID="LINK" columnWidth="35.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="2" attributeID="POS" columnWidth="67.000000" decimals="3" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
 					<attributeListLayoutParameters alignment="3" attributeID="ALLVEHTYPES" columnWidth="76.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="VEHCLASSES" columnWidth="69.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="1" attributeID="VEHCLASSES" columnWidth="70.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
 				</attributeLPars>
 			</netObjectLParSet>
 			<childNetObjectLParSet filtered="false" headerHeight="0.000000" netObjectTypeID="VEHICLEROUTESTATIC" rowHeaderWidth="0.000000" rowHeight="0" showSimulationRunAggregates="true" showTimeIntervalAggregates="false" synchronization="true">
@@ -381,98 +364,14 @@
 				</attributeLPars>
 			</childNetObjectLParSet>
 		</listLayout>
-		<listLayout childRelation="SGS" exportListWhenSimulationFinished="false" name="" no="4" verticalSplitterPosition="0.477912">
-			<netObjectLParSet filtered="false" headerHeight="0.000000" netObjectTypeID="SIGNALCONTROLLER" rowHeaderWidth="35.000000" rowHeight="0" showSimulationRunAggregates="true" showTimeIntervalAggregates="false" synchronization="false">
-				<attributeLPars>
-					<attributeListLayoutParameters alignment="2" attributeID="NO" columnWidth="27.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="NAME" columnWidth="43.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="TYPE" columnWidth="37.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="2" attributeID="CYCTM" columnWidth="49.000000" decimals="0" format="20" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="3" attributeID="CYCTMISVAR" columnWidth="74.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="SUPPLYFILE1" columnWidth="71.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="SUPPLYFILE2" columnWidth="71.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="2" attributeID="PROGNO" columnWidth="52.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-				</attributeLPars>
-			</netObjectLParSet>
-			<childNetObjectLParSet filtered="false" headerHeight="0.000000" netObjectTypeID="SIGNALGROUP" rowHeaderWidth="0.000000" rowHeight="0" showSimulationRunAggregates="true" showTimeIntervalAggregates="false" synchronization="false">
-				<attributeLPars>
-					<attributeListLayoutParameters alignment="2" attributeID="NO" columnWidth="29.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="NAME" columnWidth="45.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="TYPE" columnWidth="38.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-				</attributeLPars>
-			</childNetObjectLParSet>
-		</listLayout>
-		<listLayout childRelation="SGS" exportListWhenSimulationFinished="false" name="" no="5" verticalSplitterPosition="0.373494">
-			<netObjectLParSet filtered="false" headerHeight="0.000000" netObjectTypeID="SIGNALCONTROLLER" rowHeaderWidth="35.000000" rowHeight="0" showSimulationRunAggregates="true" showTimeIntervalAggregates="false" synchronization="false">
-				<attributeLPars>
-					<attributeListLayoutParameters alignment="2" attributeID="NO" columnWidth="27.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="NAME" columnWidth="43.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="TYPE" columnWidth="37.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="2" attributeID="CYCTM" columnWidth="49.000000" decimals="0" format="20" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="3" attributeID="CYCTMISVAR" columnWidth="74.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="SUPPLYFILE1" columnWidth="71.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="SUPPLYFILE2" columnWidth="71.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="2" attributeID="PROGNO" columnWidth="52.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-				</attributeLPars>
-			</netObjectLParSet>
-			<childNetObjectLParSet filtered="false" headerHeight="0.000000" netObjectTypeID="SIGNALGROUP" rowHeaderWidth="0.000000" rowHeight="0" showSimulationRunAggregates="true" showTimeIntervalAggregates="false" synchronization="false">
-				<attributeLPars>
-					<attributeListLayoutParameters alignment="2" attributeID="NO" columnWidth="29.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="NAME" columnWidth="45.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="TYPE" columnWidth="38.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-				</attributeLPars>
-			</childNetObjectLParSet>
-		</listLayout>
-		<listLayout childRelation="SGS" exportListWhenSimulationFinished="false" name="" no="6" verticalSplitterPosition="0.489960">
-			<netObjectLParSet filtered="false" headerHeight="0.000000" netObjectTypeID="SIGNALCONTROLLER" rowHeaderWidth="35.000000" rowHeight="0" showSimulationRunAggregates="true" showTimeIntervalAggregates="false" synchronization="false">
-				<attributeLPars>
-					<attributeListLayoutParameters alignment="2" attributeID="NO" columnWidth="27.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="NAME" columnWidth="43.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="TYPE" columnWidth="37.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="2" attributeID="CYCTM" columnWidth="49.000000" decimals="0" format="20" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="3" attributeID="CYCTMISVAR" columnWidth="74.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="SUPPLYFILE1" columnWidth="71.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="SUPPLYFILE2" columnWidth="71.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="2" attributeID="PROGNO" columnWidth="52.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-				</attributeLPars>
-			</netObjectLParSet>
-			<childNetObjectLParSet filtered="false" headerHeight="0.000000" netObjectTypeID="SIGNALGROUP" rowHeaderWidth="0.000000" rowHeight="0" showSimulationRunAggregates="true" showTimeIntervalAggregates="false" synchronization="false">
-				<attributeLPars>
-					<attributeListLayoutParameters alignment="2" attributeID="NO" columnWidth="29.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="NAME" columnWidth="45.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="TYPE" columnWidth="38.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-				</attributeLPars>
-			</childNetObjectLParSet>
-		</listLayout>
-		<listLayout childRelation="SGS" exportListWhenSimulationFinished="false" name="" no="7" verticalSplitterPosition="0.371486">
-			<netObjectLParSet filtered="false" headerHeight="0.000000" netObjectTypeID="SIGNALCONTROLLER" rowHeaderWidth="35.000000" rowHeight="0" showSimulationRunAggregates="true" showTimeIntervalAggregates="false" synchronization="false">
-				<attributeLPars>
-					<attributeListLayoutParameters alignment="2" attributeID="NO" columnWidth="27.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="NAME" columnWidth="43.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="TYPE" columnWidth="37.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="2" attributeID="CYCTM" columnWidth="49.000000" decimals="0" format="20" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="3" attributeID="CYCTMISVAR" columnWidth="74.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="SUPPLYFILE1" columnWidth="71.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="SUPPLYFILE2" columnWidth="71.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="2" attributeID="PROGNO" columnWidth="52.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-				</attributeLPars>
-			</netObjectLParSet>
-			<childNetObjectLParSet filtered="false" headerHeight="0.000000" netObjectTypeID="SIGNALGROUP" rowHeaderWidth="0.000000" rowHeight="0" showSimulationRunAggregates="true" showTimeIntervalAggregates="false" synchronization="false">
-				<attributeLPars>
-					<attributeListLayoutParameters alignment="2" attributeID="NO" columnWidth="29.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="NAME" columnWidth="45.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="1" attributeID="TYPE" columnWidth="38.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
-				</attributeLPars>
-			</childNetObjectLParSet>
-		</listLayout>
-		<listLayout childRelation="" exportListWhenSimulationFinished="false" name="" no="8" verticalSplitterPosition="0.500000">
+		<listLayout childRelation="" exportListWhenSimulationFinished="false" name="" no="3" verticalSplitterPosition="0.500000">
 			<netObjectLParSet filtered="false" headerHeight="0.000000" netObjectTypeID="SIMULATIONRUN" rowHeaderWidth="35.000000" rowHeight="0" showSimulationRunAggregates="true" showTimeIntervalAggregates="false" synchronization="false">
 				<attributeLPars>
 					<attributeListLayoutParameters alignment="2" attributeID="NO" columnWidth="29.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
 					<attributeListLayoutParameters alignment="1" attributeID="TIMESTAMP" columnWidth="113.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
 					<attributeListLayoutParameters alignment="2" attributeID="RANDSEED" columnWidth="65.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
 					<attributeListLayoutParameters alignment="2" attributeID="STARTTM" columnWidth="91.000000" decimals="0" format="21" quickViewRowHeight="0.000000" showUnits="false"/>
-					<attributeListLayoutParameters alignment="2" attributeID="SIMEND" columnWidth="79.000000" decimals="1" format="20" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="2" attributeID="SIMEND" columnWidth="85.000000" decimals="1" format="20" quickViewRowHeight="0.000000" showUnits="false"/>
 				</attributeLPars>
 			</netObjectLParSet>
 		</listLayout>
@@ -582,6 +481,17 @@
 					<attributeListLayoutParameters alignment="1" attributeID="POS" columnWidth="0.000000" decimals="3" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
 					<attributeListLayoutParameters alignment="1" attributeID="ALLVEHTYPES" columnWidth="0.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
 					<attributeListLayoutParameters alignment="1" attributeID="VEHCLASSES" columnWidth="0.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+				</attributeLPars>
+			</netObjectListLayoutParameters>
+			<netObjectListLayoutParameters filtered="false" headerHeight="0.000000" netObjectTypeID="VEHICLETRAVELTIMEMEASUREMENT" rowHeaderWidth="0.000000" rowHeight="0" showSimulationRunAggregates="true" showTimeIntervalAggregates="false" synchronization="true">
+				<attributeLPars>
+					<attributeListLayoutParameters alignment="1" attributeID="NO" columnWidth="0.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="1" attributeID="NAME" columnWidth="0.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="1" attributeID="STARTLINK" columnWidth="0.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="1" attributeID="STARTPOS" columnWidth="0.000000" decimals="3" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="1" attributeID="ENDLINK" columnWidth="0.000000" decimals="0" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="1" attributeID="ENDPOS" columnWidth="0.000000" decimals="3" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
+					<attributeListLayoutParameters alignment="1" attributeID="DIST" columnWidth="0.000000" decimals="2" format="1" quickViewRowHeight="0.000000" showUnits="false"/>
 				</attributeLPars>
 			</netObjectListLayoutParameters>
 		</netObjectLPars>
