@@ -1,0 +1,123 @@
+-----------------------------------------------------------------
+### (September 22, 2017 -- 16:59:11) ###
+-----------------------------------------------------------------
+[SUCCESS] : RBCGUI::SaveFile(c:\users\matthew muresan\git\bluetoothsimulate\bluetoothsimulate\viss\alt1.rbc) --> File Saved
+-----------------------------------------------------------------
+### (September 22, 2017 -- 16:57:36) ###
+-----------------------------------------------------------------
+[SUCCESS] : RBCGUI::SaveFile(c:\users\matthew muresan\git\bluetoothsimulate\bluetoothsimulate\viss\alt1.rbc) --> File Saved
+### (September 22, 2017 -- 16:36:03) ###
+-----------------------------------------------------------------
+[SUCCESS] : RBCGUI::SaveFile(C:\Users\Matthew Muresan\git\BluetoothSimulate\BluetoothSimulate\viss\alt1.rbc) --> File Saved
+### (September 22, 2017 -- 13:56:41) ###
+### (September 22, 2017 -- 12:22:39) ###
+### (September 22, 2017 -- 12:21:34) ###
+### (September 22, 2017 -- 11:53:42) ###
+[SUCCESS] : RBCGUI::SaveFile(c:\users\matthew muresan\git\bluetoothsimulate\bluetoothsimulate\viss\alt1.rbc) --> File Saved
+### (September 22, 2017 -- 11:52:31) ###
+[SUCCESS] : RBCGUI::-----------------------------------------------------------------
+### (September 22, 2017 -- 16:57:36) ###
+[SUCCESS] : RBCGUI::SaveFile(c:\users\matthew muresan\git\bluetoothsimulate\bluetoothsimulate\viss\alt1.rbc) --> File Saved
+-----------------------------------------------------------------
+### (September 22, 2017 -- 16:36:03) ###
+[SUCCESS] : RBCGUI::SaveFile(C:\Users\Matthew Muresan\git\BluetoothSimulate\BluetoothSimulate\viss\alt1.rbc) --> File Saved
+### (September 22, 2017 -- 13:56:41) ###
+-----------------------------------------------------------------
+### (September 22, 2017 -- 12:22:39) ###
+### (September 22, 2017 -- 12:21:34) ###
+### (September 22, 2017 -- 11:53:42) ###
+[SUCCESS] : RBCGUI::SaveFile(c:\users\matthew muresan\git\bluetoothsimulate\bluetoothsimulate\viss\alt1.rbc) --> File Saved
+### (September 22, 2017 -- 11:52:31) ###
+[SUCCESS] : RBCGUI::-----------------------------------------------------------------
+### (September 22, 2017 -- 16:57:36) ###
+[SUCCESS] : RBCGUI::SaveFile(c:\users\matthew muresan\git\bluetoothsimulate\bluetoothsimulate\viss\alt1.rbc) --> File Saved
+-----------------------------------------------------------------
+### (September 22, 2017 -- 16:36:03) ###
+[SUCCESS] : RBCGUI::SaveFile(C:\Users\Matthew Muresan\git\BluetoothSimulate\BluetoothSimulate\viss\alt1.rbc) --> File Saved
+### (September 22, 2017 -- 13:56:41) ###
+-----------------------------------------------------------------
+### (September 22, 2017 -- 12:22:39) ###
+### (September 22, 2017 -- 12:21:34) ###
+### (September 22, 2017 -- 11:53:42) ###
+[SUCCESS] : RBCGUI::SaveFile(c:\users\matthew muresan\git\bluetoothsimulate\bluetoothsimulate\viss\alt1.rbc) --> File Saved
+### (September 22, 2017 -- 11:52:31) ###
+[SUCCESS] : RBCGUI::-----------------------------------------------------------------
+### (September 22, 2017 -- 16:57:36) ###
+[SUCCESS] : RBCGUI::SaveFile(c:\users\matthew muresan\git\bluetoothsimulate\bluetoothsimulate\viss\alt1.rbc) --> File Saved
+-----------------------------------------------------------------
+### (September 22, 2017 -- 16:36:03) ###
+[SUCCESS] : RBCGUI::SaveFile(C:\Users\Matthew Muresan\git\BluetoothSimulate\BluetoothSimulate\viss\alt1.rbc) --> File Saved
+### (September 22, 2017 -- 13:56:41) ###
+-----------------------------------------------------------------
+### (September 22, 2017 -- 12:22:39) ###
+### (September 22, 2017 -- 12:21:34) ###
+### (September 22, 2017 -- 11:53:42) ###
+[SUCCESS] : RBCGUI::SaveFile(c:\users\matthew muresan\git\bluetoothsimulate\bluetoothsimulate\viss\alt1.rbc) --> File Saved
+### (September 22, 2017 -- 11:52:31) ###
+[SUCCESS] : RBCGUI::-----------------------------------------------------------------
+### (September 22, 2017 -- 16:57:36) ###
+[SUCCESS] : RBCGUI::SaveFile(c:\users\matthew muresan\git\bluetoothsimulate\bluetoothsimulate\viss\alt1.rbc) --> File Saved
+-----------------------------------------------------------------
+### (September 22, 2017 -- 16:36:03) ###
+[SUCCESS] : RBCGUI::SaveFile(C:\Users\Matthew Muresan\git\BluetoothSimulate\BluetoothSimulate\viss\alt1.rbc) --> File Saved
+### (September 22, 2017 -- 13:56:41) ###
+-----------------------------------------------------------------
+### (September 22, 2017 -- 12:22:39) ###
+### (September 22, 2017 -- 12:21:34) ###
+### (September 22, 2017 -- 11:53:42) ###
+[SUCCESS] : RBCGUI::SaveFile(c:\users\matthew muresan\git\bluetoothsimulate\bluetoothsimulate\viss\alt1.rbc) --> File Saved
+### (September 22, 2017 -- 11:52:31) ###
+[SUCCESS] : RBCGUI::-----------------------------------------------------------------
+### (September 22, 2017 -- 16:57:36) ###
+[SUCCESS] : RBCGUI::SaveFile(c:\users\matthew muresan\git\bluetoothsimulate\bluetoothsimulate\viss\alt1.rbc) --> File Saved
+-----------------------------------------------------------------
+### (September 22, 2017 -- 16:36:03) ###
+[SUCCESS] : RBCGUI::SaveFile(C:\Users\Matthew Muresan\git\BluetoothSimulate\BluetoothSimulate\viss\alt1.rbc) --> File Saved
+### (September 22, 2017 -- 13:56:41) ###
+-----------------------------------------------------------------
+### (September 22, 2017 -- 12:22:39) ###
+### (September 22, 2017 -- 12:21:34) ###
+### (September 22, 2017 -- 11:53:42) ###
+[SUCCESS] : RBCGUI::SaveFile(c:\users\matthew muresan\git\bluetoothsimulate\bluetoothsimulate\viss\alt1.rbc) --> File Saved
+### (September 22, 2017 -- 11:52:31) ###
+[SUCCESS] : RBCGUI::-----------------------------------------------------------------
+### (September 22, 2017 -- 16:57:36) ###
+[SUCCESS] : RBCGUI::SaveFile(c:\users\matthew muresan\git\bluetoothsimulate\bluetoothsimulate\viss\alt1.rbc) --> File Saved
+-----------------------------------------------------------------
+### (September 22, 2017 -- 16:36:03) ###
+[SUCCESS] : RBCGUI::SaveFile(C:\Users\Matthew Muresan\git\BluetoothSimulate\BluetoothSimulate\viss\alt1.rbc) --> File Saved
+### (September 22, 2017 -- 13:56:41) ###
+-----------------------------------------------------------------
+### (September 22, 2017 -- 12:22:39) ###
+### (September 22, 2017 -- 12:21:34) ###
+### (September 22, 2017 -- 11:53:42) ###
+[SUCCESS] : RBCGUI::SaveFile(c:\users\matthew muresan\git\bluetoothsimulate\bluetoothsimulate\viss\alt1.rbc) --> File Saved
+### (September 22, 2017 -- 11:52:31) ###
+[SUCCESS] : RBCGUI::-----------------------------------------------------------------
+### (September 22, 2017 -- 16:57:36) ###
+[SUCCESS] : RBCGUI::SaveFile(c:\users\matthew muresan\git\bluetoothsimulate\bluetoothsimulate\viss\alt1.rbc) --> File Saved
+-----------------------------------------------------------------
+### (September 22, 2017 -- 16:36:03) ###
+[SUCCESS] : RBCGUI::SaveFile(C:\Users\Matthew Muresan\git\BluetoothSimulate\BluetoothSimulate\viss\alt1.rbc) --> File Saved
+### (September 22, 2017 -- 13:56:41) ###
+-----------------------------------------------------------------
+### (September 22, 2017 -- 12:22:39) ###
+### (September 22, 2017 -- 12:21:34) ###
+### (September 22, 2017 -- 11:53:42) ###
+[SUCCESS] : RBCGUI::SaveFile(c:\users\matthew muresan\git\bluetoothsimulate\bluetoothsimulate\viss\alt1.rbc) --> File Saved
+### (September 22, 2017 -- 11:52:31) ###
+[SUCCESS] : RBCGUI::-----------------------------------------------------------------
+### (September 22, 2017 -- 16:57:36) ###
+[SUCCESS] : RBCGUI::SaveFile(c:\users\matthew muresan\git\bluetoothsimulate\bluetoothsimulate\viss\alt1.rbc) --> File Saved
+-----------------------------------------------------------------
+### (September 22, 2017 -- 16:36:03) ###
+[SUCCESS] : RBCGUI::SaveFile(C:\Users\Matthew Muresan\git\BluetoothSimulate\BluetoothSimulate\viss\alt1.rbc) --> File Saved
+### (September 22, 2017 -- 13:56:41) ###
+-----------------------------------------------------------------
+### (September 22, 2017 -- 12:22:39) ###
+### (September 22, 2017 -- 12:21:34) ###
+### (September 22, 2017 -- 11:53:42) ###
+[SUCCESS] : RBCGUI::SaveFile(c:\users\matthew muresan\git\bluetoothsimulate\bluetoothsimulate\viss\alt1.rbc) --> File Saved
+### (September 22, 2017 -- 11:52:31) ###
+[SUCCESS] : RBCGUI::-----------------------------------------------------------------
+### (September 22, 2017 -- 16:57:36) ###

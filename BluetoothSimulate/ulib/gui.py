@@ -29,7 +29,7 @@ from ulib.learning import GradientDescentSelectTime
 
 
 class VissimThread(threading.Thread):
-    def __init__(self, foname, guiQ, guiQLock, startDay, resetDay, detectorfile, populatesteps=100):
+    def __init__(self, foname, guiQ, guiQLock, startDay, resetDay, detectorfile, populatesteps=500):
         threading.Thread.__init__(self)
         
         self.guiQ = guiQ

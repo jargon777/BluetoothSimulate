@@ -1,0 +1,112 @@
+[
+	{
+		"id": "bluetoothmiddle",
+		"type": "bluetooth",
+		"coord": [43,-183.5,0], 
+		"range": 200,
+		"pollrate": 20,
+		"detection-penr": 100,
+		"rawdetections": [],
+		"detectrecord": {},
+		"comment": "centre detector at the middle of the intersection"
+	},
+	{
+		"id": "bluetoothsouth",
+		"type": "bluetooth",
+		"coord": [110,-475,0], 
+		"range": 200,
+		"pollrate": 20,
+		"detection-penr": 100,
+		"rawdetections": [],
+		"detectrecord": {},
+		"comment": "south detector at 300m from centre"
+	},
+	{
+		"id": "bluetoothnorth",
+		"type": "bluetooth",
+		"coord": [-28,110,0], 
+		"range": 200,
+		"pollrate": 20,
+		"detection-penr": 100,
+		"rawdetections": [],
+		"detectrecord": {},
+		"comment": "north detector at 300m from centre"
+	},
+	{
+		"id": "bluetootheast",
+		"type": "bluetooth",
+		"coord": [336,-120,0], 
+		"range": 200,
+		"pollrate": 20,
+		"detection-penr": 100,
+		"rawdetections": [],
+		"detectrecord": {},
+		"comment": "east detector at 300m from centre"
+	},
+	{
+		"id": "bluetoothwest",
+		"type": "bluetooth",
+		"coord": [-250,-247,0], 
+		"range": 200,
+		"pollrate": 20,
+		"detection-penr": 100,
+		"rawdetections": [],
+		"detectrecord": {},
+		"comment": "west detector at 300m from centre"
+	},
+	{
+		"id": "wifimiddle",
+		"type": "wifi",
+		"coord": [43,-183.5,0], 
+		"range": 200,
+		"pollrate": 20,
+		"detection-penr": 100,
+		"rawdetections": [],
+		"detectrecord": {},
+		"comment": "centre detector at the middle of the intersection"
+	},
+	{
+		"id": "wifisouth",
+		"type": "wifi",
+		"coord": [110,-475,0], 
+		"range": 200,
+		"pollrate": 20,
+		"detection-penr": 100,
+		"rawdetections": [],
+		"detectrecord": {},
+		"comment": "south detector at 300m from centre"
+	},
+	{
+		"id": "wifinorth",
+		"type": "wifi",
+		"coord": [-28,110,0], 
+		"range": 200,
+		"pollrate": 20,
+		"detection-penr": 100,
+		"rawdetections": [],
+		"detectrecord": {},
+		"comment": "north detector at 300m from centre"
+	},
+	{
+		"id": "wifieast",
+		"type": "wifi",
+		"coord": [336,-120,0], 
+		"range": 200,
+		"pollrate": 20,
+		"detection-penr": 100,
+		"rawdetections": [],
+		"detectrecord": {},
+		"comment": "east detector at 300m from centre"
+	},
+	{
+		"id": "wifiwest",
+		"type": "wifi",
+		"coord": [-250,-247,0], 
+		"range": 200,
+		"pollrate": 20,
+		"detection-penr": 100,
+		"rawdetections": [],
+		"detectrecord": {},
+		"comment": "west detector at 300m from centre"
+	}
+]
