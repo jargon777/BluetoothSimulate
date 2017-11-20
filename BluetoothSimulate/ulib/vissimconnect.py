@@ -513,6 +513,17 @@ class VehicleDetectors():
         
         #clear arcive records
         self._loadDetectors()
+        
+    def PruneRecords(self, time, max_age=1000):
+        for detector in self.Detectors:
+            remove_list = []
+            for key, value in detector["detectrecord"].items():
+                if value["last"] < time - max_age: #remove keys if last value older than this time
+                    remove_list.append(key)
+            for key in remove_list:
+                del detector["detectrecord"][key]
+                    
+        self.matchVehicles()
     
     #VERSION 2 Metohd - Dumps Directional Travle Times                
     def DumpDirectionalTT(self, writeloc, only_totaltt=False, prefix=""):

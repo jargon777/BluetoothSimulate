@@ -10,7 +10,7 @@ class GradientDescentSelectTime():
         self.VissimControl = VissimControl
         self.active_X = 0.5 #initial green split ratio
         self.Xs = []
-        self.gamma = 100 #amount of time to adjust and split between the movements.
+        self.gamma = 10 #amount of time to adjust and split between the movements.
         self.precision = 0.001
         self.previous_step_size = self.active_X
         self.system_av_tt = []
@@ -47,7 +47,8 @@ class GradientDescentSelectTime():
                     a_del[dir][key] = (movement[0] - (self.fastest_tt[dir][key] * movement[1])) / movement[1] #compute weighted average for average delay
                     system_tot_tt += movement[0]
                     system_tot_v += movement[1]
-                
+            
+            if system_tot_tt == 0: return [time_NB, time_WB] #short circuit if no detections    
             system_av_tt = system_tot_tt / system_tot_v 
             #identify the critical movements
             NB_SB_crit = 0
@@ -85,25 +86,26 @@ class GradientDescentSelectTime():
             self.highest_saturation["NBSB"].append(NB_SB_crit)
             self.Xs.append(self.active_X)
             self.system_av_tt.append(system_av_tt)
-            self.active_X = NB_SB_crit / (NB_SB_crit + EB_WB_crit)
+            #self.active_X = NB_SB_crit / (NB_SB_crit + EB_WB_crit)
 
-            if self.active_X < 0.1: self.active_X = 0.1
-            if self.active_X > 0.9: self.active_X = 0.9
-            print("New X is " + str(self.active_X))
-            print("Old X was" + str(self.Xs[-1]))
+            #if self.active_X < 0.1: self.active_X = 0.1
+            #if self.active_X > 0.9: self.active_X = 0.9
+            #print("New X is " + str(self.active_X))
+            #print("Old X was" + str(self.Xs[-1]))
             
-        self.VissimControl.Data.VehicleDetectors.ArchiveRecords(i, writeloc, False, False) #archive all the old data and erase it, restarting collection
+        #self.VissimControl.Data.VehicleDetectors.ArchiveRecords(i, writeloc, False, False) #archive all the old data and erase it, restarting collection
+        #remove old travel times.
+        self.VissimControl.Data.VehicleDetectors.PruneRecords(i)
         
         #re-allocate a block of time to the two movements to adjust and balance the delays.
         print("Original NS time is: " + str(time_NB) + " and for EW " + str(time_WB))
-        time_WB = time_WB - self.gamma/2
-        time_NB = time_NB - self.gamma/2
-        
-        adj_NB = (((self.active_X*self.gamma) + 5) // 10) * 10
-        adj_WB = self.gamma - adj_NB
-        
-        time_NB += adj_NB
-        time_WB += adj_WB
+        if NB_SB_crit > EB_WB_crit and time_WB > 50:
+            time_NB += self.gamma
+            time_WB -= self.gamma
+        elif time_NB > 50:
+            time_NB -= self.gamma
+            time_WB += self.gamma
+        self.active_X = time_NB / (time_NB + time_WB)
         
         print("Resulting NS time is: " + str(time_NB) + " and for EW " + str(time_WB))
         return [time_NB, time_WB]

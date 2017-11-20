@@ -55,14 +55,12 @@ class VissimThread(threading.Thread):
             WRITELOC = "out/"
             ACTIONINTERVAL = 25000
             ACTIONMODE = 1 #two actions only for the learning signal control
+            optimised = False
             while i < STEPS:
                 self.VissimControl.advanceSimulation()
                 ActionsAllowed = self.VissimControl.ActionsAllowed(ACTIONMODE)
-                if 1 in ActionsAllowed:
-                    self.VissimControl.doAction(1) #advance the signals.
-                if i % ACTIONINTERVAL == 0:
+                if 1 in ActionsAllowed and not optimised:
                     #times = self.VissimControl.Data
-                    self.VissimControl.restartSimulation()
                     NB_time = self.VissimControl.Data.Signals[1].RBCLogicControl.TimingRules["MinGreens"][6]
                     WB_time = self.VissimControl.Data.Signals[1].RBCLogicControl.TimingRules["MinGreens"][8]
                     times = self.Optimiser.SelectSplit(i, WRITELOC, NB_time, WB_time)
@@ -71,7 +69,11 @@ class VissimThread(threading.Thread):
                     self.VissimControl.Data.Signals[1].RBCLogicControl.TimingRules["MinGreens"][8] = times[1]
                     self.VissimControl.Data.Signals[1].RBCLogicControl.TimingRules["MinGreens"][4] = times[1]
                     self.Optimiser.DumpPerformanceMeasures(WRITELOC)
-                    
+                    optimised = True
+                if 1 in ActionsAllowed and optimised:
+                    self.VissimControl.doAction(1) #advance the signals.
+                    optimised = False
+                
                 if i % 250 == 0:
                     print("Step " + str(i) + " completed")
                     
