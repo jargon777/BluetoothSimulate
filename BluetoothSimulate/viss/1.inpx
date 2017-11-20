@@ -2111,22 +2111,22 @@
 	<vehicleInputs>
 		<vehicleInput anmFlag="false" link="3" name="" no="1">
 			<timeIntVehVols>
-				<timeIntervalVehVolume cont="false" timeInt="1 0" vehComp="1" volType="STOCHASTIC" volume="900.000000"/>
+				<timeIntervalVehVolume cont="false" timeInt="1 0" vehComp="1" volType="STOCHASTIC" volume="1100.000000"/>
 			</timeIntVehVols>
 		</vehicleInput>
 		<vehicleInput anmFlag="false" link="1" name="" no="2">
 			<timeIntVehVols>
-				<timeIntervalVehVolume cont="false" timeInt="1 0" vehComp="1" volType="STOCHASTIC" volume="400.000000"/>
+				<timeIntervalVehVolume cont="false" timeInt="1 0" vehComp="1" volType="STOCHASTIC" volume="250.000000"/>
 			</timeIntVehVols>
 		</vehicleInput>
 		<vehicleInput anmFlag="false" link="2" name="" no="3">
 			<timeIntVehVols>
-				<timeIntervalVehVolume cont="false" timeInt="1 0" vehComp="1" volType="STOCHASTIC" volume="900.000000"/>
+				<timeIntervalVehVolume cont="false" timeInt="1 0" vehComp="1" volType="STOCHASTIC" volume="1100.000000"/>
 			</timeIntVehVols>
 		</vehicleInput>
 		<vehicleInput anmFlag="false" link="4" name="" no="4">
 			<timeIntVehVols>
-				<timeIntervalVehVolume cont="false" timeInt="1 0" vehComp="1" volType="STOCHASTIC" volume="400.000000"/>
+				<timeIntervalVehVolume cont="false" timeInt="1 0" vehComp="1" volType="STOCHASTIC" volume="250.000000"/>
 			</timeIntVehVols>
 		</vehicleInput>
 	</vehicleInputs>
@@ -2294,9 +2294,21 @@
 		<occupancyDistribution mean="1.000000" name="Single Occupancy" no="1" stdDev="0.000000" type="NORMAL"/>
 	</occupancyDistributions>
 	<vehicleTravelTimeMeasurements>
-		<vehicleTravelTimeMeasurement name="" no="1">
-			<start link="3" pos="487.788177"/>
-			<end link="3" pos="1046.721573"/>
+		<vehicleTravelTimeMeasurement name="WB" no="1">
+			<start link="3" pos="44.000266"/>
+			<end link="3" pos="1472.615854"/>
+		</vehicleTravelTimeMeasurement>
+		<vehicleTravelTimeMeasurement name="EB" no="2">
+			<start link="2" pos="19.982417"/>
+			<end link="2" pos="1448.076653"/>
+		</vehicleTravelTimeMeasurement>
+		<vehicleTravelTimeMeasurement name="SB" no="3">
+			<start link="1" pos="8.146032"/>
+			<end link="1" pos="1304.137330"/>
+		</vehicleTravelTimeMeasurement>
+		<vehicleTravelTimeMeasurement name="NB" no="4">
+			<start link="4" pos="32.111335"/>
+			<end link="4" pos="1327.495926"/>
 		</vehicleTravelTimeMeasurement>
 	</vehicleTravelTimeMeasurements>
 	<vehicleRoutingDecisionsStatic>
@@ -2370,9 +2382,16 @@
 		</vehicleRoutingDecisionStatic>
 	</vehicleRoutingDecisionsStatic>
 	<delayMeasurements>
-		<delayMeasurement name="" no="1">
+		<delayMeasurement name="EW" no="1">
 			<vehTravTmMeas>
 				<intObjectRef key="1"/>
+				<intObjectRef key="2"/>
+			</vehTravTmMeas>
+		</delayMeasurement>
+		<delayMeasurement name="NS" no="2">
+			<vehTravTmMeas>
+				<intObjectRef key="3"/>
+				<intObjectRef key="4"/>
 			</vehTravTmMeas>
 		</delayMeasurement>
 	</delayMeasurements>
