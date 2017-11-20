@@ -64,7 +64,7 @@ class GradientDescentSelectTime():
                     movement -= 4 #to account for the liklihood that the "fastest" value is the extremities based on the polling rate. Temporary fix.
                     if dir == "NB" or dir == "SB":
                         if not movement <= 0:
-                            saturation = (-(cycletime**2-2*cycletime*movement-2*cycletime*green_NB+green_NB**2)/(2*movement*green_NB))
+                            saturation = (-(cycletime**2-2*cycletime*movement-2*cycletime*green_NB+green_NB**2)/(2*movement*green_NB)) * (cycletime/green_NB)
                             if saturation < 0.1: saturation = 0.1 #enforce a floor for the saturation.
                             print("Movement " + str(key) + ": " + str(movement) + " Saturation: " + str(saturation))
                             if saturation > NB_SB_crit: 
@@ -72,7 +72,7 @@ class GradientDescentSelectTime():
                                 NB_SB_crit_time = movement
                     elif dir == "EB" or dir == "WB":
                         if not movement <= 0:
-                            saturation = (-(cycletime**2-2*cycletime*movement-2*cycletime*green_WB+green_WB**2)/(2*movement*green_WB))
+                            saturation = (-(cycletime**2-2*cycletime*movement-2*cycletime*green_WB+green_WB**2)/(2*movement*green_WB))  * (cycletime/green_WB)
                             if saturation < 0.1: saturation = 0.1 #enforce a floor for the saturation.
                             print("Movement " + str(key) + ": " + str(movement) + " Saturation: " + str(saturation))
                             if saturation > EB_WB_crit: 
