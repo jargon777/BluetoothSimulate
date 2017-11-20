@@ -10,7 +10,7 @@ class GradientDescentSelectTime():
         self.VissimControl = VissimControl
         self.active_X = 0.5 #initial green split ratio
         self.Xs = []
-        self.gamma = 60 #amount of time to adjust and split between the movements.
+        self.gamma = 100 #amount of time to adjust and split between the movements.
         self.precision = 0.001
         self.previous_step_size = self.active_X
         self.system_av_tt = []
@@ -52,24 +52,37 @@ class GradientDescentSelectTime():
             #identify the critical movements
             NB_SB_crit = 0
             EB_WB_crit = 0
+            NB_SB_crit_time = 0
+            EB_WB_crit_time = 0
+            cycletime = time_NB/10 + time_WB/10 + 10 #/10 because vissim reports in 100ths of seconds, and add back on the lost time.
+            green_NB = time_NB/10
+            green_WB = time_WB/10
             for dir, delays in a_del.items():
                 for key, movement in delays.items():
                     movement = movement/10 #times are in hundredth seconds.
                     movement -= 4 #to account for the liklihood that the "fastest" value is the extremities based on the polling rate. Temporary fix.
                     if dir == "NB" or dir == "SB":
                         if not movement <= 0:
-                            print("Movement " + str(key) + ": " + str(movement))
-                            if movement > NB_SB_crit: 
-                                NB_SB_crit = movement
+                            saturation = (-(cycletime**2-2*cycletime*movement-2*cycletime*green_NB+green_NB**2)/(2*movement*green_NB)) * (cycletime/green_NB)
+                            if saturation < 0.1: saturation = 0.1 #enforce a floor for the saturation.
+                            print("Movement " + str(key) + ": " + str(movement) + " Saturation: " + str(saturation))
+                            if saturation > NB_SB_crit: 
+                                NB_SB_crit = saturation
+                                NB_SB_crit_time = movement
                     elif dir == "EB" or dir == "WB":
                         if not movement <= 0:
-                            print("Movement " + str(key) + ": " + str(movement))
-                            if movement > EB_WB_crit: 
-                                EB_WB_crit = movement
+                            saturation = (-(cycletime**2-2*cycletime*movement-2*cycletime*green_WB+green_WB**2)/(2*movement*green_WB))  * (cycletime/green_WB)
+                            if saturation < 0.1: saturation = 0.1 #enforce a floor for the saturation.
+                            print("Movement " + str(key) + ": " + str(movement) + " Saturation: " + str(saturation))
+                            if saturation > EB_WB_crit: 
+                                EB_WB_crit = saturation
+                                EB_WB_crit_time = movement
             
             
-            self.highest_delays["EBWB"].append(NB_SB_crit)
-            self.highest_delays["NBSB"].append(NB_SB_crit)
+            self.highest_delays["EBWB"].append(EB_WB_crit_time)
+            self.highest_delays["NBSB"].append(NB_SB_crit_time)
+            self.highest_saturation["EBWB"].append(EB_WB_crit)
+            self.highest_saturation["NBSB"].append(NB_SB_crit)
             self.Xs.append(self.active_X)
             self.system_av_tt.append(system_av_tt)
             self.active_X = NB_SB_crit / (NB_SB_crit + EB_WB_crit)
@@ -105,7 +118,7 @@ class GradientDescentSelectTime():
             print(self.system_av_tt)
             for X in self.Xs:
                 writefile.write(str(X) + "," + str(self.system_av_tt[i]) + "," 
-                                + str(self.highest_delays["NBSB"][i]) + "," 
-                                + str(self.highest_delays["EBWB"][i]) + "\n")
+                                + str(self.highest_delays["NBSB"][i]) + "," + str(self.highest_saturation["NBSB"][i]) + "," 
+                                + str(self.highest_delays["EBWB"][i]) + "," + str(self.highest_saturation["EBWB"][i]) + "\n")
                 i += 1
             
