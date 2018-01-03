@@ -95,9 +95,9 @@ class GradientDescentSelectTime():
             
         #self.VissimControl.Data.VehicleDetectors.ArchiveRecords(i, writeloc, False, False) #archive all the old data and erase it, restarting collection
         #remove old travel times.
-        #self.VissimControl.Data.VehicleDetectors.PruneRecords(i)
-        self.VissimControl.Data.VehicleDetectors.DumpDirectionalTT(writeloc)
-        print(a_del)
+        self.VissimControl.Data.VehicleDetectors.PruneRecords(i)
+        #self.VissimControl.Data.VehicleDetectors.DumpDirectionalTT(writeloc)
+        #print(a_del)
         
         #re-allocate a block of time to the two movements to adjust and balance the delays.
         print("Original NS time is: " + str(time_NB) + " and for EW " + str(time_WB))
