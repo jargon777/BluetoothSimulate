@@ -483,8 +483,8 @@ class VehicleDetectors():
                         #save the total traveltime
                         if not "total_travel_time" in records[keysave]: records[keysave]["total_travel_time"] = tt
                         else: records[keysave]["total_travel_time"] += tt
-                        if not "fastest_travel_time" in records[keysave]: records[keysave]["fastest_travel_time"] = tt
-                        elif records[keysave]["fastest_travel_time"] > tt: records[keysave]["fastest_travel_time"] = tt
+                        #if not "fastest_travel_time" in records[keysave]: records[keysave]["fastest_travel_time"] = tt
+                        #elif records[keysave]["fastest_travel_time"] > tt: records[keysave]["fastest_travel_time"] = tt
                       
         self.matchedTT = records
         
@@ -496,13 +496,59 @@ class VehicleDetectors():
         for key, record in records.items():
             if "middle" in key: continue
             if principle_key + "TO" in key:
-                tt_vol[key] = [0,0,0]
-                tt_vol[key][0] = record["total_travel_time"] #total travel time
-                tt_vol[key][1] = len(record) - 2 #number of vehicles (exclude the two extra entries of fastest and total.
-                tt_vol[key][2] = record["fastest_travel_time"]
+                tt_vol[key] = {"total":[0,0]}
+                tt_vol[key]["total"][0] = record["total_travel_time"] #total travel time
+                tt_vol[key]["total"][1] = len(record) - 1 #number of vehicles (exclude the two extra entries of fastest and total.
+                #tt_vol[key][2] = record["fastest_travel_time"]
+                free_flow_cluster = self.IdentifyFreeFlowCluster(record)
+                tt_vol[key]["delay"] = free_flow_cluster[0] #mean "delayed time" cluster
+                tt_vol[key]["fflow"] = free_flow_cluster[1] #mean "free flow" cluster
         return tt_vol                
                 
+    #k means clustering to identify free flow travel time by grouping the travel time measures into two clusters
+    def IdentifyFreeFlowCluster(self, records):
+        mean_d = 0 #cluster A is the max value
+        mean_ff = 999999 #cluster B is the min value
         
+        prev_cluster_d_sum = 0
+        cluster_d_sum = 0
+        cluster_ff_sum = 0
+        cluster_d = [] #delayed vehicle cluster
+        cluster_ff = [] #freeflow cluster
+        for id, tt in records.items():
+            if id == "total_travel_time": continue
+            if tt > mean_d: mean_d = tt #seed the mean delay cluster with slowest time
+            if tt < mean_ff: mean_ff = tt #seed the mean ff cluster with the fastest time
+            cluster_d.append(tt)
+            cluster_d_sum += tt
+            
+        while (cluster_d_sum != prev_cluster_d_sum):
+            prev_cluster_d_sum = cluster_d_sum
+            cluster_list = cluster_d + cluster_ff
+            cluster_d_sum = 0
+            cluster_ff_sum = 0
+            cluster_d = []
+            cluster_ff = []
+            
+            for tt in cluster_list:
+                difference_d = math.fabs(mean_d - tt)
+                difference_ff = math.fabs(mean_ff - tt)
+                if difference_d > difference_ff:
+                    cluster_ff.append(tt)
+                    cluster_ff_sum += tt
+                else:
+                    cluster_d.append(tt)
+                    cluster_d_sum += tt
+            
+            mean_d = cluster_d_sum / len(cluster_d)
+            mean_ff = cluster_ff_sum / len(cluster_ff)
+            
+        return [(cluster_d_sum,len(cluster_d)),(cluster_ff_sum,len(cluster_ff))] #the average delay
+        
+        
+        
+        
+                 
         
     #writes the existing records to file and then flushes the record. Use when implementing a new timing plan.
     def ArchiveRecords(self, time, writeloc, only_totaltt=False, rematch=False):

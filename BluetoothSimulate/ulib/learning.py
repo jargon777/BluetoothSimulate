@@ -27,7 +27,7 @@ class GradientDescentSelectTime():
         vols = {}
         vols["NB"] = self.VissimControl.Data.VehicleDetectors.ReturnMovementTimes("bluetoothsouth")
         vols["SB"] = self.VissimControl.Data.VehicleDetectors.ReturnMovementTimes("bluetoothnorth")
-        vols["EB"] = self.VissimControl.Data.VehicleDetectors.ReturnMovementTimes("bluetootheast")
+        vols["EB"] = self.VissimControl.Data.VehicleDetectors.ReturnMovementTimes("bluetoothwest")
         vols["WB"] = self.VissimControl.Data.VehicleDetectors.ReturnMovementTimes("bluetoothwest")
         
         #choose a direction to modify the split times
@@ -42,11 +42,12 @@ class GradientDescentSelectTime():
                 a_del[dir] = {}
                 if not dir in self.fastest_tt: self.fastest_tt[dir] = {}
                 for key, movement in vol.items():
-                    if not key in self.fastest_tt[dir]: self.fastest_tt[dir][key] = movement[2]
-                    elif self.fastest_tt[dir][key] > movement[2]: self.fastest_tt[dir][key] = movement[2]
-                    a_del[dir][key] = (movement[0] - (self.fastest_tt[dir][key] * movement[1])) / movement[1] #compute weighted average for average delay
-                    system_tot_tt += movement[0]
-                    system_tot_v += movement[1]
+                    if not key in self.fastest_tt[dir]: self.fastest_tt[dir][key] = movement["fflow"][0]/movement["fflow"][1]
+                    elif self.fastest_tt[dir][key] > movement["fflow"][0]/movement["fflow"][1] and movement["fflow"][1] > 5: self.fastest_tt[dir][key] = movement["fflow"][0]/movement["fflow"][1] #update the fastest time if enough vehicles recorded
+                    #calculate the overall average via weighting
+                    a_del[dir][key] = movement["total"][0]/movement["total"][1] - self.fastest_tt[dir][key]                
+                    system_tot_tt += movement["total"][0]
+                    system_tot_v += movement["total"][1]
             
             if system_tot_tt == 0: return [time_NB, time_WB] #short circuit if no detections    
             system_av_tt = system_tot_tt / system_tot_v 
@@ -61,7 +62,7 @@ class GradientDescentSelectTime():
             for dir, delays in a_del.items():
                 for key, movement in delays.items():
                     movement = movement/10 #times are in hundredth seconds.
-                    movement -= 4 #to account for the liklihood that the "fastest" value is the extremities based on the polling rate. Temporary fix.
+                    #movement -= 4 #to account for the liklihood that the "fastest" value is the extremities based on the polling rate. Temporary fix.
                     if dir == "NB" or dir == "SB":
                         if not movement <= 0:
                             saturation = (-(cycletime**2-2*cycletime*movement-2*cycletime*green_NB+green_NB**2)/(2*movement*green_NB))
@@ -94,10 +95,9 @@ class GradientDescentSelectTime():
             #print("Old X was" + str(self.Xs[-1]))
             
         #self.VissimControl.Data.VehicleDetectors.ArchiveRecords(i, writeloc, False, False) #archive all the old data and erase it, restarting collection
+        #self.VissimControl.Data.VehicleDetectors.DumpDirectionalTT(writeloc) #write the travel times
         #remove old travel times.
         self.VissimControl.Data.VehicleDetectors.PruneRecords(i)
-        #self.VissimControl.Data.VehicleDetectors.DumpDirectionalTT(writeloc)
-        #print(a_del)
         
         #re-allocate a block of time to the two movements to adjust and balance the delays.
         print("Original NS time is: " + str(time_NB) + " and for EW " + str(time_WB))
