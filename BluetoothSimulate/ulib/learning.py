@@ -10,7 +10,7 @@ class GradientDescentSelectTime():
         self.VissimControl = VissimControl
         self.active_X = 0.5 #initial green split ratio
         self.Xs = []
-        self.gamma = 10 #amount of time to adjust and split between the movements.
+        self.gamma = 50 #amount of time to adjust and split between the movements.
         self.precision = 0.001
         self.previous_step_size = self.active_X
         self.system_av_tt = []
@@ -67,17 +67,19 @@ class GradientDescentSelectTime():
                         if not movement <= 0:
                             saturation = (-(cycletime**2-2*cycletime*movement-2*cycletime*green_NB+green_NB**2)/(2*movement*green_NB))
                             if saturation < 0.1: saturation = 0.1 #enforce a floor for the saturation.
-                            print("Movement " + str(key) + ": " + str(movement) + " Saturation: " + str(saturation))
-                            if saturation > NB_SB_crit: 
-                                NB_SB_crit = saturation
+                            flowration = saturation*(green_NB/cycletime)
+                            print("Movement " + str(key) + ": " + str(movement) + " Saturation: " + str(saturation) + " Flow Ration: " + str(flowration))
+                            if flowration > NB_SB_crit: 
+                                NB_SB_crit = flowration
                                 NB_SB_crit_time = movement
                     elif dir == "EB" or dir == "WB":
                         if not movement <= 0:
                             saturation = (-(cycletime**2-2*cycletime*movement-2*cycletime*green_WB+green_WB**2)/(2*movement*green_WB))
                             if saturation < 0.1: saturation = 0.1 #enforce a floor for the saturation.
-                            print("Movement " + str(key) + ": " + str(movement) + " Saturation: " + str(saturation))
-                            if saturation > EB_WB_crit: 
-                                EB_WB_crit = saturation
+                            flowration = saturation*(green_WB/cycletime)
+                            print("Movement " + str(key) + ": " + str(movement) + " Saturation: " + str(saturation) + " Flow Ration: " + str(flowration))
+                            if flowration > EB_WB_crit: 
+                                EB_WB_crit = flowration
                                 EB_WB_crit_time = movement
             
             
@@ -87,12 +89,7 @@ class GradientDescentSelectTime():
             self.highest_saturation["NBSB"].append(NB_SB_crit)
             self.Xs.append(self.active_X)
             self.system_av_tt.append(system_av_tt)
-            #self.active_X = NB_SB_crit / (NB_SB_crit + EB_WB_crit)
 
-            #if self.active_X < 0.1: self.active_X = 0.1
-            #if self.active_X > 0.9: self.active_X = 0.9
-            #print("New X is " + str(self.active_X))
-            #print("Old X was" + str(self.Xs[-1]))
             
         #self.VissimControl.Data.VehicleDetectors.ArchiveRecords(i, writeloc, False, False) #archive all the old data and erase it, restarting collection
         #self.VissimControl.Data.VehicleDetectors.DumpDirectionalTT(writeloc) #write the travel times
@@ -101,12 +98,28 @@ class GradientDescentSelectTime():
         
         #re-allocate a block of time to the two movements to adjust and balance the delays.
         print("Original NS time is: " + str(time_NB) + " and for EW " + str(time_WB))
-        if NB_SB_crit > EB_WB_crit and time_WB > 50:
-            time_NB += self.gamma
-            time_WB -= self.gamma
-        elif time_NB > 50:
-            time_NB -= self.gamma
-            time_WB += self.gamma
+        Ideal_NB = ((NB_SB_crit / (NB_SB_crit + EB_WB_crit)) * (cycletime*10))
+        print("Ideal NS time is: " + str(Ideal_NB) + " and for EW " + str(cycletime*10 - Ideal_NB))
+        distance = time_NB - Ideal_NB
+        span = self.gamma
+        gradient = distance/span
+        gradient = gradient / ((1+gradient**2)**0.5) * self.gamma + 5 #because we are going to round via floor division
+        gradient = gradient // 10 
+        gradient *= 10 #floor division to round.
+        time_WB += gradient
+        time_NB -= gradient
+        if time_WB < 50:
+            time_WB = 50
+            time_NB -= 50 - (time_WB)
+        elif time_NB < 50:
+            time_NB = 50
+            time_WB -= 50 - (time_NB)
+        #if NB_SB_crit > EB_WB_crit and time_WB > 50:
+            #time_NB += self.gamma
+            #time_WB -= self.gamma
+        #elif time_NB > 50:
+            #time_NB -= self.gamma
+            #time_WB += self.gamma
         self.active_X = time_NB / (time_NB + time_WB)
         
         print("Resulting NS time is: " + str(time_NB) + " and for EW " + str(time_WB))
