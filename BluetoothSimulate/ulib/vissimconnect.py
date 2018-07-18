@@ -35,7 +35,7 @@ import os
 import json
 import math
 import random
-
+import numpy
 
 
 class MessageRelay(object):
@@ -333,7 +333,7 @@ class VissimSignal(object):
         '''
         RBC_plan = (([{"desc":"E", "group": 6, "rank":0}], [{"desc":"S", "group": 8, "rank":0}]),
                     ([{"desc":"W", "group": 2, "rank":0}], [{"desc":"N", "group": 4, "rank":0}]))
-        signal_rules = {"plan":RBC_plan, "min-green":{1:400, 3:400, 5:400, 7:400, 2:400, 4:400, 6:400, 8:400}} #150 = 30 simulated seconds, 50 = 10 simulated seconds
+        signal_rules = {"plan":RBC_plan, "min-green":{1:450, 3:450, 5:450, 7:450, 2:450, 4:450, 6:450, 8:450}} #150 = 30 simulated seconds, 50 = 10 simulated seconds
         self.RBCLogicControl = RBC(signal_rules, time)
         
         #Add signals to the groups and the initialize their state
@@ -507,6 +507,8 @@ class VehicleDetectors():
                 
     #k means clustering to identify free flow travel time by grouping the travel time measures into two clusters
     def IdentifyFreeFlowCluster(self, records):
+        if len(records.items()) == 0:
+            return #not enough items
         mean_d = 0 #cluster A is the max value
         mean_ff = 999999 #cluster B is the min value
         
@@ -521,8 +523,11 @@ class VehicleDetectors():
             if tt < mean_ff: mean_ff = tt #seed the mean ff cluster with the fastest time
             cluster_d.append(tt)
             cluster_d_sum += tt
-            
-        while (cluster_d_sum != prev_cluster_d_sum):
+        
+        max_mean_d = mean_d
+        min_mean_ff = mean_ff
+        consecutive_attempts = 0    
+        while (cluster_d_sum != prev_cluster_d_sum or consecutive_attempts > 0):
             prev_cluster_d_sum = cluster_d_sum
             cluster_list = cluster_d + cluster_ff
             cluster_d_sum = 0
@@ -540,8 +545,21 @@ class VehicleDetectors():
                     cluster_d.append(tt)
                     cluster_d_sum += tt
             
-            mean_d = cluster_d_sum / len(cluster_d)
-            mean_ff = cluster_ff_sum / len(cluster_ff)
+            if (len(cluster_d) == 0 or len(cluster_ff) == 0) and consecutive_attempts <= 5:
+                consecutive_attempts += 1
+                mean_d += numpy.random.normal(0, 50, 1)[0] #add or subtract up to sigma 5s of delay to jig the system
+                mean_ff += numpy.random.normal(0, 50, 1)[0] #add or subtract up to sigma 5s of delay to jig the system
+                continue
+            elif consecutive_attempts > 5:
+                #we can't find a cluster arrangement... assign extremities and break out
+                if len(cluster_d) == 0: mean_d = true_mean_d #set to max d
+                if len(cluster_ff) == 0: mean_ff = min_mean_ff #set to fastest
+                break
+                
+            else:
+                consecutive_attempts = 0
+                mean_d = cluster_d_sum / len(cluster_d)
+                mean_ff = cluster_ff_sum / len(cluster_ff)
             
         return [(cluster_d_sum,len(cluster_d)),(cluster_ff_sum,len(cluster_ff))] #the average delay
         

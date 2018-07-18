@@ -1,21 +1,9 @@
 [
 	{
-		"id": "bluetoothmiddle",
+		"id": "bluetootheast",
 		"type": "bluetooth",
-		"coord": [43,-183.5,0], 
-		"range": 200,
-		"pollrate": 20,
-		"detection-penr": 100,
-		"rawdetections": [],
-		"detectrecord": {},
-		"comment": "centre detector at the middle of the intersection",
-		"word-location": "centre"
-	},
-	{
-		"id": "bluetoothsouth",
-		"type": "bluetooth",
-		"coord": [110,-475,0], 
-		"range": 200,
+		"coord": [2000,-580,0], 
+		"range": 150,
 		"pollrate": 20,
 		"detection-penr": 100,
 		"rawdetections": [],
@@ -24,10 +12,10 @@
 		"word-location": "south"
 	},
 	{
-		"id": "bluetoothnorth",
+		"id": "bluetoothwest",
 		"type": "bluetooth",
-		"coord": [-28,110,0], 
-		"range": 200,
+		"coord": [1625,-300,0], 
+		"range": 150,
 		"pollrate": 20,
 		"detection-penr": 100,
 		"rawdetections": [],
@@ -36,27 +24,15 @@
 		"word-location": "north"
 	},
 	{
-		"id": "bluetootheast",
+		"id": "bluetoothnorth",
 		"type": "bluetooth",
-		"coord": [336,-120,0], 
-		"range": 200,
+		"coord": [2000,-353,0], 
+		"range": 150,
 		"pollrate": 20,
 		"detection-penr": 100,
 		"rawdetections": [],
 		"detectrecord": {},
 		"comment": "east detector at 300m from centre",
 		"word-location": "east"
-	},
-	{
-		"id": "bluetoothwest",
-		"type": "bluetooth",
-		"coord": [-250,-247,0], 
-		"range": 200,
-		"pollrate": 20,
-		"detection-penr": 100,
-		"rawdetections": [],
-		"detectrecord": {},
-		"comment": "west detector at 300m from centre",
-		"word-location": "west"
 	}
 ]

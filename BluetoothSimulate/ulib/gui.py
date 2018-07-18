@@ -29,7 +29,7 @@ from ulib.learning import GradientDescentSelectTime
 
 
 class VissimThread(threading.Thread):
-    def __init__(self, foname, guiQ, guiQLock, startDay, resetDay, detectorfile, populatesteps=500):
+    def __init__(self, foname, guiQ, guiQLock, startDay, resetDay, detectorfile, populatesteps=0):
         threading.Thread.__init__(self)
         
         self.guiQ = guiQ
@@ -47,27 +47,34 @@ class VissimThread(threading.Thread):
         try:
             self.VissimControl = vissimconnect.VissimConnect(self.foname, self.detectorfile, self.populatesteps) #main class to interact with VISSIM. See imported ulib/vissimconnect.
             self.VissimControl.Data.ActivateSignals(self.VissimControl.Vissim, self.VissimControl.step) #activate the signals which we are controlling.
-            self.Optimiser = GradientDescentSelectTime(self.VissimControl)
+            self.Optimiser = learning.GoldenMethods(self.VissimControl)
             #learning.runLearning(self.VissimControl, self.guiQ, self.guiQLock, self.startDay, self.resetDay)
             
             i = 1
-            STEPS = 99999999
+            STEPS = 86400 * 10
             WRITELOC = "out/"
-            ACTIONINTERVAL = 5000
+            Next_Action = 900 #cycle length
             ACTIONMODE = 1 #two actions only for the learning signal control
+            
+            init_cycle = 90
+            
             while i < STEPS:
                 self.VissimControl.advanceSimulation()
                 ActionsAllowed = self.VissimControl.ActionsAllowed(ACTIONMODE)
-                if i % ACTIONINTERVAL == 0:
+                if i >= Next_Action:
                     #times = self.VissimControl.Data
-                    NB_time = self.VissimControl.Data.Signals[1].RBCLogicControl.TimingRules["MinGreens"][6]
-                    WB_time = self.VissimControl.Data.Signals[1].RBCLogicControl.TimingRules["MinGreens"][8]
-                    times = self.Optimiser.SelectSplit(i, WRITELOC, NB_time, WB_time)
-                    self.VissimControl.Data.Signals[1].RBCLogicControl.TimingRules["MinGreens"][6] = times[0]
-                    self.VissimControl.Data.Signals[1].RBCLogicControl.TimingRules["MinGreens"][2] = times[0]
-                    self.VissimControl.Data.Signals[1].RBCLogicControl.TimingRules["MinGreens"][8] = times[1]
-                    self.VissimControl.Data.Signals[1].RBCLogicControl.TimingRules["MinGreens"][4] = times[1]
-                    self.Optimiser.DumpPerformanceMeasures(WRITELOC)
+                    res_times = self.Optimiser.get_new_parms_real(i)
+                    
+                    cycle_t = res_times["greens"][0] + res_times["greens"][1] #set the next time to the cycle time
+                    Next_Action += cycle_t*10
+                    print("Adjusted greens to " + str(res_times["greens"]) + " and cycle to " + str(cycle_t))
+                    
+                    
+                    self.VissimControl.Data.Signals[1].RBCLogicControl.TimingRules["MinGreens"][6] = res_times["greens"][0]*10
+                    self.VissimControl.Data.Signals[1].RBCLogicControl.TimingRules["MinGreens"][2] = res_times["greens"][0]*10
+                    self.VissimControl.Data.Signals[1].RBCLogicControl.TimingRules["MinGreens"][8] = res_times["greens"][1]*10
+                    self.VissimControl.Data.Signals[1].RBCLogicControl.TimingRules["MinGreens"][4] = res_times["greens"][1]*10
+                    #self.Optimiser.DumpPerformanceMeasures(WRITELOC)
                 if 1 in ActionsAllowed:
                     self.VissimControl.doAction(1) #advance the signals.
                 
@@ -77,8 +84,10 @@ class VissimThread(threading.Thread):
                 i += 1
             
             print("Program End... dumping records...")
-            self.VissimControl.Data.DumpRecords(WRITELOC)
-            self.VissimControl.Data.DumpDirectionalTT(WRITELOC)
+            self.Optimiser.write_results(WRITELOC)
+            #self.VissimControl.Data.DumpRecords(WRITELOC)
+            #self.VissimControl.Data.DumpDirectionalTT(WRITELOC)
+            
         
         except:
             raise
